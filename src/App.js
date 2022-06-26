@@ -1,29 +1,17 @@
 import './App.scss';
-import io from 'socket.io-client';
-import { useState } from 'react';
-import Chat from './components/Chat/Chat';
-
-const socket = io.connect(`http://localhost:8081`)
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ContactPage from './pages/ContactPage/ContactPage';
 
 function App() {
-  const [username, setUsername] = useState('')
-  const [room, setRoom] = useState('')
-  // const [showChat, setShowChat] = useState(false)
-  
-  const joinRoom = () => {
-    if (username !== '' && room !== '') {
-      socket.emit('join_room', room)
-      // setShowChat(true)
-    }
-  }
 
   return (
     <div className="App">
-      <h3>Join Chat</h3>
-      <input placeholder='John...' onChange={(e) => setUsername(e.target.value)} />
-      <input placeholder='Room ID...' onChange={(e) => setRoom(e.target.value)} />
-      <button onClick={joinRoom}>Join Now</button>
-      <Chat socket={socket} username={username} room={room} />
+      Home
+      <BrowserRouter>
+        <Switch>
+          <Route path='/contactus' component={ContactPage} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
