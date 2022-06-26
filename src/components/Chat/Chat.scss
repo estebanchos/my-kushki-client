@@ -1,2 +1,121 @@
+.chat {
+    width: 300px;
+    height: 420px;
 
+    &__header {
+        height: 45px;
+        border-radius: 6px;
+        background: #263238;
+        position: relative;
+        cursor: pointer;
+    }
 
+    &__header-title {
+        display: block;
+        padding: 0 1em 0 2em;
+        color: #fff;
+        font-weight: 700;
+        line-height: 45px;
+    }
+
+    &__body {
+        height: calc(450px - (45px + 70px));
+        border: 1px solid #263238;
+        background: #fff;
+        position: relative;
+    }
+
+    &__container {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__message {
+        &--me {
+            justify-content: flex-end;
+        }
+
+        &--other {
+
+            justify-content: flex-start;
+        }
+    }
+
+    &__footer {
+        height: 40px;
+        border: 1px solid #263238;
+        border-top: none;
+        display: flex;
+    }
+
+    &__input {
+        height: 100%;
+        flex: 85%;
+        border: 0;
+        padding: 0 0.7em;
+        font-size: 1em;
+        border-right: 1px dotted #607d8b;
+        outline: none;
+        font-family: "Open Sans", sans-serif;
+    }
+}
+
+.message {
+    min-height: 40px;
+    max-width: 80%;
+    margin: 0.25rem 0;
+
+    &--me {
+        margin-left: auto;
+        margin-right: 0.5rem;
+    }
+
+    &--other {
+        margin-left: 0.5rem;
+        margin-right: auto;
+    }
+
+    &__content {
+        width: 100%;
+        height: auto;
+        min-height: 40px;
+        background-color: cornflowerblue;
+        border-radius: 5px;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding-right: 0.35rem;
+        padding-left: 0.35rem;
+        overflow-wrap: break-word;
+        word-break: break-word;
+
+        &--other {
+            margin-right: 1rem;
+            background-color: #43a047;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__time {
+        margin: 0;
+    }
+    &__author {
+        margin: 0;
+    }
+    &__text {
+        text-align: left;
+        margin: 0;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}
