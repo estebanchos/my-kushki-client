@@ -3,8 +3,8 @@ import io from 'socket.io-client';
 import { useState } from 'react';
 import Chat from '../../components/Chat/Chat';
 import { apiUrl, devUrl } from '../../utils/api';
-
-const socket = io.connect(apiUrl+':8081')
+// +':8081'
+const socket = io.connect(apiUrl)
 
 function ContactPage() {
     const [username, setUsername] = useState('')
