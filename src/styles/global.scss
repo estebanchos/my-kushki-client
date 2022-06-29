@@ -1,5 +1,6 @@
 @use './partials/typography' as *;
 @use './partials/colors' as *;
+@use './partials/mixins' as *;
 
 html {
     font-size: 100%;
@@ -13,6 +14,7 @@ html {
   
   body {
     margin: 0;
+    // @include font-family-body
   }
 
   a {

@@ -10,3 +10,19 @@
         @content;
     }
 }
+
+@mixin font-family-body {
+    font-family: 'Avenir';
+    font-weight: 400;
+}
+
+@mixin font-family-logo {
+    font-family: 'Grotesk';
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+@mixin font-family-title {
+    font-family: 'Tiempos';
+    font-weight: 600;
+}

@@ -1,7 +1,7 @@
 import './NewUser.scss';
 import axios from 'axios';
 import { useState } from 'react';
-import { apiUrl } from '../../utils/api'
+import { apiUrl, devUrl } from '../../utils/api'
 
 function NewUser() {
     const [name, setName] = useState('')
@@ -14,7 +14,7 @@ function NewUser() {
             email,
             password
         }
-        axios.post(`${apiUrl}/users/newUser`, newUser)
+        axios.post(`${devUrl}/users/newUser`, newUser)
             .then(res => {
                 console.log(res)
             })
