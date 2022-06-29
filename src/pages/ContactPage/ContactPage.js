@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Chat from '../../components/Chat/Chat';
 import { apiUrl, devUrl } from '../../utils/api';
 // +':8081'
-const socket = io.connect(apiUrl)
+const socket = io.connect(apiUrl+':8081')
 
 function ContactPage() {
     const [username, setUsername] = useState('')
