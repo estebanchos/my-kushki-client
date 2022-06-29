@@ -2,13 +2,23 @@
 @use '../../styles/partials/typography' as *;
 @use '../../styles/partials/colors' as *;
 
+.container {
+    background-color: $color-background-header;
+    padding: 1rem;
+}
+
 .header {
-    margin: 1rem;
+    color: $color-font-secondary;
 
     &__top {
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    &__top-right {
+        display: flex;
+        align-items: center;
     }
 
     &__logo {
@@ -17,6 +27,21 @@
 
     &__auth {
         @include font-family-body;
+        background-color: $color-background-dark;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        margin-right: 1rem;
+        font-size: 1rem;
     }
+}
+
+.hamburger-react {
+    @include tablet {
+        display: none;
+    }
+    
 }
 
