@@ -5,7 +5,7 @@ import Chat from '../../components/Chat/Chat';
 import { apiUrl, devUrl } from '../../utils/api';
 
 // +':8081'
-const socket = io.connect(devUrl+':8081')
+const socket = io.connect(apiUrl+':8081')
 
 function ContactPage() {
     const serverUrl = process.env.REACT_APP_API

@@ -24,7 +24,7 @@ function App() {
       <BrowserRouter>
         <Header isAuth={isAuth} />
         <Switch>
-          <Route path='/contactus' component={ContactPage} />
+          <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
           <Route path='/register' component={NewUser} />
           <Route path='/do' component={DoPage} />
         </Switch>
