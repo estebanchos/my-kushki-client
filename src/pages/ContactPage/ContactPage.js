@@ -3,10 +3,12 @@ import io from 'socket.io-client';
 import { useState } from 'react';
 import Chat from '../../components/Chat/Chat';
 import { apiUrl, devUrl } from '../../utils/api';
+
 // +':8081'
 const socket = io.connect(devUrl+':8081')
 
 function ContactPage() {
+    const serverUrl = process.env.REACT_APP_API
     const [username, setUsername] = useState('')
     const [room, setRoom] = useState('')
     // const [showChat, setShowChat] = useState(false)
