@@ -14,7 +14,9 @@ function Header({ isAuth }) {
         <div className='container'>
             <header className='header'>
                 <div className='header__top'>
-                    <span className='header__logo'>My Kushki</span>
+                    <Link to='/' className='header__logo-link'>
+                        <span className='header__logo'>My Kushki</span>
+                    </Link>
                     <div className='header__top-right'>
                         <Link to='/login' className='header__auth'>{isAuth ? 'Log Out' : 'Log In'}</Link>
                         <Hamburger toggled={isShowingNav} toggle={setShowNav} color='#fff' rounded label='Show navigation menu' />

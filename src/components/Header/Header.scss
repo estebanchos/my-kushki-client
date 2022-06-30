@@ -30,6 +30,10 @@
         @include font-family-logo;
     }
 
+    &__logo-link {
+        color: $color-font-secondary;
+    }
+
     &__auth {
         @include font-family-body;
         background-color: $color-background-dark;
