@@ -6,6 +6,8 @@ import DoPage from './pages/DoPage/DoPage'
 import Header from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import HomePage from './pages/HomePage/HomePage';
+import Login from './components/LogIn/Login';
+import LearnPage from './pages/LearnPage/LearnPage';
 
 function App() {
 
@@ -26,9 +28,11 @@ function App() {
         <Header isAuth={isAuth} />
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
           <Route path='/register' component={NewUser} />
-          <Route path='/do' component={DoPage} />
+          <Route path='/login' component={Login} />
+          <Route path='/learn' component={LearnPage} />
+          <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
+          <Route path='/do' render={(props) => <DoPage isAuth={isAuth} {...props} />} />
         </Switch>
       </BrowserRouter>
     </div>

@@ -1,0 +1,86 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.modal {
+    &--hidden {
+        position: absolute;
+        top: 0;
+        right: -100%;
+    }
+
+    position: absolute;
+    right: 0;
+    transition: 0.5s;
+    height: 100vh;
+    width: 100vw;
+    background-color: $color-background-header;
+}
+
+.modal-nav {
+    @include font-family-body;
+    color: $color-font-secondary;
+    font-weight: 500;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+
+    &__parent-item {
+        font-size: 1.25rem;
+        color: $color-font-secondary;
+        padding: 1rem;
+        margin: 0 2rem;
+        border-bottom: 1px solid $color-background-light;
+    }
+
+    &__parent-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__children-container {
+        &--hidden {
+            display: none;
+        }
+    }
+    
+    &__item {
+        font-size: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $color-font-secondary;
+        padding: 1rem;
+        margin: 0 2rem;
+        border-bottom: 1px solid $color-background-light;
+    }
+
+    &__link {
+        color: $color-font-secondary;
+    }
+
+    &__icon {
+        transition: 0.5s;
+        &--rotate {
+            transform: rotate(-90deg);
+            transform-origin: center center;
+            transition: 0.5s;
+        }
+    }
+}
+
+.children {
+    list-style: none;
+    font-size: 1rem;
+    padding: 0 1rem;
+
+    &--hidden {
+        display: none;
+    }
+
+    &__item {
+        display: flex;
+        padding: 0.5rem 0;
+    }
+}

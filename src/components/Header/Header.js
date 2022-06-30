@@ -1,10 +1,14 @@
 import './Header.scss';
 import { Cross as Hamburger } from 'hamburger-react'
 import { useState } from 'react';
+import Nav from '../Nav/Nav';
+import { Link } from 'react-router-dom';
+import ModalNav from '../ModalNav/ModalNav';
 
 function Header({ isAuth }) {
 
-    const [showNav, setShowNav] = useState(false)
+    const [isShowingNav, setShowNav] = useState(false)
+    const showNavModal = () => setShowNav(!isShowingNav)
 
     return (
         <div className='container'>
@@ -12,14 +16,15 @@ function Header({ isAuth }) {
                 <div className='header__top'>
                     <span className='header__logo'>My Kushki</span>
                     <div className='header__top-right'>
-                        <span className='header__auth'>{isAuth ? 'Sign Out' : 'Sign In'}</span>
-                        <Hamburger toggled={showNav} toggle={setShowNav} color='#fff' rounded label='Show navigation menu' />
+                        <Link to='/login' className='header__auth'>{isAuth ? 'Log Out' : 'Log In'}</Link>
+                        <Hamburger toggled={isShowingNav} toggle={setShowNav} color='#fff' rounded label='Show navigation menu' />
                     </div>
                 </div>
-                <nav className='header__nav'>
-
-                </nav>
+                <div className='header__nav'>
+                    <Nav />
+                </div>
             </header>
+            <ModalNav isShowingNav={isShowingNav} />
         </div>
     );
 }
