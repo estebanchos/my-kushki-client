@@ -15,7 +15,7 @@ function Header({ isAuth }) {
             <header className='header'>
                 <div className='header__top'>
                     <Link to='/' className='header__logo-link'>
-                        <span className='header__logo'>My Kushki</span>
+                        <span className='header__logo'>my Kushki</span>
                     </Link>
                     <div className='header__top-right'>
                         <Link to='/login' className='header__auth'>{isAuth ? 'Log Out' : 'Log In'}</Link>

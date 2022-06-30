@@ -1,0 +1,41 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.main-hp {
+    @include desktop {
+        @include desktop-fixed-size;
+
+    }
+}
+
+.questions {
+    @include font-family-body;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__container {
+        @include card-style;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
+
+    &__title {
+        @include font-family-title;
+        font-size: 1.6rem;
+        margin: 1rem;
+        color: $color-font-titles;
+    }
+
+    &__question {
+        &--right {
+            @include quote-style;
+            margin: 0.5rem 1rem 0.5rem auto;
+        }
+        &--left {
+            @include quote-style;
+            margin: 0.5rem auto 0.5rem 1rem;    
+        }
+    }
+}

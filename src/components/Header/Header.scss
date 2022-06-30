@@ -3,7 +3,7 @@
 
 .container {
     background-color: $color-background-header;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
 }
 
 .header {
@@ -13,9 +13,7 @@
         margin: 0.5rem 1.5rem;
     }
     @include desktop {
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
+        @include desktop-fixed-size;
     }
 
     &__top {
@@ -41,7 +39,7 @@
         @include font-family-body;
         background-color: $color-background-dark;
         color: $color-font-secondary;
-        border-radius: 8px;
+        border-radius: 3rem;
         display: flex;
         align-items: center;
         justify-content: center;

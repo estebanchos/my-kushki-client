@@ -1,0 +1,35 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.action-article {
+    @include font-family-body;
+    width: 90%;
+    margin: 1.5rem auto 3rem auto;
+    // margin-left: auto;
+    // margin-right: auto;
+    // margin-bottom: 2rem;
+
+    &__title {
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: $color-font-titles;
+        margin: 1rem;
+    }
+
+    &__copy {
+        font-size: 1rem;
+        margin: 1rem;
+    }
+
+    &__container {
+        margin: 2rem 0;
+    }
+
+    &__link {
+        color: $color-font-secondary;
+        padding: 1rem 1.75rem;
+        font-size: 1.25rem;
+        background-color: $color-background-dark;
+        border-radius: 3rem;
+    }
+}

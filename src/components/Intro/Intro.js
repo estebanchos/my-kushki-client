@@ -3,7 +3,7 @@ import './Intro.scss'
 function Intro({ title, copy }) {
     return ( 
         <div className='intro'>
-            <h3 className='intro__title'>{title}</h3>
+            <h2 className='intro__title'>{title}</h2>
             <p className='intro__copy'>{copy}</p>
         </div>
      );
