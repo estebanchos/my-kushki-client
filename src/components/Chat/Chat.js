@@ -1,34 +1,42 @@
-import { useEffect, useState } from 'react';
 import './Chat.scss';
+import { useEffect, useState } from 'react';
 import { currentTime } from '../../utils/date'
 import ScrollToBottom from 'react-scroll-to-bottom';
+import io from 'socket.io-client';
 
-function Chat({ socket, username, room }) {
+const ENDPOINT = 'localhost:8080'
+const socket = io.connect(ENDPOINT)
+
+function Chat({ showChat, username, room }) {
     const [currentMessage, setCurrentMessage] = useState('')
     const [messageList, setMessageList] = useState([])
 
-    const sendMessage = async () => {
+    const sendMessage = () => {
         if (currentMessage !== '') {
-            const messageData = {
+            const data = {
                 room: room,
                 author: username,
                 message: currentMessage,
                 time: currentTime()
             }
-            await socket.emit('send_message', messageData)
-            setMessageList((list) => [...list, messageData])
+            socket.emit('send_message', data)
             setCurrentMessage('')
+            setMessageList([...messageList, data])
         }
     }
 
     useEffect(() => {
         socket.on('receive_message', (data) => {
-            setMessageList((list) => [...list, data])
+            setMessageList([...messageList, data])
         })
-    }, [socket])
+    },[socket, messageList])
+
+    useEffect(() => {
+        socket.on('join', {username, room})
+    }, [])
 
     return (
-        <div className='chat'>
+        <div className={`chat${showChat ? '' : '--hidden'}`}>
             <div className='chat__header'>
                 <p className='chat__header-title'>Live Chat</p>
             </div>
@@ -73,9 +81,7 @@ function Chat({ socket, username, room }) {
                     value={currentMessage}
                     placeholder='Enter message...'
                     onChange={(e) => setCurrentMessage(e.target.value)}
-                    onKeyPress={(e) => {
-                        e.key === 'Enter' && sendMessage()
-                    }}
+                    onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
                 />
                 <button onClick={sendMessage}>&#9658;</button>
             </div>

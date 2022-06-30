@@ -3,7 +3,7 @@ import './ModalNav.scss';
 import expandIcon from '../../assets/icons/expand.svg'
 import { useState } from 'react';
 
-function ModalNav({ isShowingNav }) {
+function ModalNav({ isShowingNav, showNavModal }) {
 
     const [isShowingLearn, setIsShowingLearn] = useState(false)
     const showLearnChildren = () => setIsShowingLearn(!isShowingLearn)
@@ -13,26 +13,31 @@ function ModalNav({ isShowingNav }) {
             <ul className='modal-nav'>
                 <li className='modal-nav__parent-item'>
                     <div className='modal-nav__parent-container'>
-                        <Link className='modal-nav__link' to='/learn'>Learn</Link>
-                        <img className={`modal-nav__icon${isShowingLearn ? '--rotate' : ''}`} src={expandIcon} onClick={showLearnChildren} />
+                        <Link className='modal-nav__link' to='/learn' onClick={showNavModal}>Learn</Link>
+                        <img
+                            className={`modal-nav__icon${isShowingLearn ? '--rotate' : ''}`}
+                            src={expandIcon}
+                            alt='icon to expand submenu'
+                            onClick={showLearnChildren}
+                        />
                     </div>
                     <ul className={`children${isShowingLearn ? '' : '--hidden'}`}>
                         <li className='children__item'>
-                            <Link className='modal-nav__link' to='/learn/basics'>The Basics</Link>
+                            <Link className='modal-nav__link' to='/learn/basics' onClick={showNavModal}>The Basics</Link>
                         </li>
                         <li className='children__item'>
-                            <Link className='modal-nav__link' to='/learn/intermediate'>Intermediate</Link>
+                            <Link className='modal-nav__link' to='/learn/intermediate' onClick={showNavModal}>Intermediate</Link>
                         </li>
                         <li className='children__item'>
-                            <Link className='modal-nav__link' to='/learn/advanced'>Advanced</Link>
+                            <Link className='modal-nav__link' to='/learn/advanced' onClick={showNavModal}>Advanced</Link>
                         </li>
                     </ul>
                 </li>
                 <li className='modal-nav__item'>
-                    <Link className='modal-nav__link' to='/do'>Do</Link>
+                    <Link className='modal-nav__link' to='/do' onClick={showNavModal}>Do</Link>
                 </li>
                 <li className='modal-nav__item'>
-                    <Link className='modal-nav__link' to='/contactus'>Contact Us</Link>
+                    <Link className='modal-nav__link' to='/contactus' onClick={showNavModal}>Contact Us</Link>
                 </li>
             </ul>
         </nav>

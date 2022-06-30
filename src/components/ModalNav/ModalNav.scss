@@ -62,9 +62,10 @@
 
     &__icon {
         transition: 0.5s;
+        transform-origin: center center;
         &--rotate {
-            transform: rotate(-90deg);
             transform-origin: center center;
+            transform: rotate(-180deg);
             transition: 0.5s;
         }
     }

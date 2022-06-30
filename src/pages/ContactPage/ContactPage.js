@@ -1,32 +1,38 @@
 import './ContactPage.scss';
-import io from 'socket.io-client';
 import { useState } from 'react';
 import Chat from '../../components/Chat/Chat';
-import { apiUrl, devUrl } from '../../utils/api';
-
-// +':8081'
-const socket = io.connect(apiUrl+':8081')
 
 function ContactPage() {
-    const serverUrl = process.env.REACT_APP_API
     const [username, setUsername] = useState('')
     const [room, setRoom] = useState('')
-    // const [showChat, setShowChat] = useState(false)
+    const [showChat, setShowChat] = useState(false)
 
-    const joinRoom = () => {
-        if (username !== '' && room !== '') {
-            socket.emit('join_room', room)
-            // setShowChat(true)
-        }
+    const joinRoom = (e) => {
+        e.preventDefault()
+        setShowChat(true)
+    }
+
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value)
+    }
+
+    const handleRoomChange = (e) => {
+        setRoom(e.target.value)
     }
 
     return (
         <>
             <h3>Join Chat</h3>
-            <input placeholder='John...' onChange={(e) => setUsername(e.target.value)} />
-            <input placeholder='Room ID...' onChange={(e) => setRoom(e.target.value)} />
-            <button onClick={joinRoom}>Join Now</button>
-            <Chat socket={socket} username={username} room={room} />
+            <form onSubmit={joinRoom}>
+                <input type='text' name='username' placeholder='Name' value={username} onChange={handleUsernameChange} />
+                <input type='text' name='room' placeholder='Room' value={room} onChange={handleRoomChange} />
+                <button
+                    disabled={(!username || !room) ? true : false}
+                    type='submit'>
+                    Join Now
+                </button>
+            </form>
+            <Chat showChat={showChat} username={username} room={room} />
         </>
     );
 }

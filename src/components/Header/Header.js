@@ -24,7 +24,7 @@ function Header({ isAuth }) {
                     <Nav />
                 </div>
             </header>
-            <ModalNav isShowingNav={isShowingNav} />
+            <ModalNav isShowingNav={isShowingNav} showNavModal={showNavModal} />
         </div>
     );
 }
