@@ -10,6 +10,9 @@
     color: $color-font-secondary;
 
     @include tablet {
+        margin: 0.5rem 1.5rem;
+    }
+    @include desktop {
         max-width: 1000px;
         margin-left: auto;
         margin-right: auto;
