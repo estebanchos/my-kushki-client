@@ -9,7 +9,7 @@ function Nav() {
                     <Link className='nav__link' to='/learn'>Learn</Link>
                 </li>
                 <li className='nav__item'>
-                    <Link className='nav__link' to='/do'>Do</Link>
+                    <Link className='nav__link' to='/dashboard'>Do</Link>
                 </li>
                 <li className='nav__item'>
                     <Link className='nav__link' to='/contactus'>Contact Us</Link>

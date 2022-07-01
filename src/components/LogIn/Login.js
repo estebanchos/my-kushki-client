@@ -5,13 +5,18 @@ import showIcon from '../../assets/icons/show.svg';
 import InvalidInput from '../InvalidInput/InvalidInput';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api'
+import { useHistory } from 'react-router-dom';
 
 function Login({ userLoggedIn }) {
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [isValidLogin, setValidLogin] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
+    let history = useHistory()
+    
+    const redirectToDashboard = () => history.push('/dashboard')
 
     const handleSubmit = () => {
         if (email && password) {
@@ -23,9 +28,11 @@ function Login({ userLoggedIn }) {
                     setEmail('')
                     setPassword('')
                     sessionStorage.setItem('token', res.data.token)
-                    userLoggedIn(true)
+                    userLoggedIn()
+                    redirectToDashboard()
                 })
                 .catch(err => {
+                    console.log(err)
                     setValidLogin(err.response.data.validLogin)
                     setErrorMessage(err.response.data.message)
                 })

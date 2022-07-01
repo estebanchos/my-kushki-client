@@ -31,7 +31,7 @@ function App() {
           <Route path='/login' render={(props) => <Login userLoggedIn={userLoggedIn} {...props} />} />
           <Route path='/learn' component={LearnPage} />
           <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
-          <Route path='/do' render={(props) => <DashboardPage isAuth={isAuth} {...props} />} />
+          <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} {...props} />} />
         </Switch>
       </BrowserRouter>
     </div>

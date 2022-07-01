@@ -2,6 +2,7 @@ import './DashboardPage.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api'
+import MenuOption from '../../components/MenuOption/MenuOption';
 
 function DashboardPage({ isAuth }) {
 
@@ -10,10 +11,22 @@ function DashboardPage({ isAuth }) {
     const [newBudgetModal, setNewBudgetModal] = useState(false)
     const [newTrackerModal, setNewTrackerModal] = useState(false)
 
-
-
     const token = sessionStorage.getItem('token')
     const authHeader = { Authorization: 'Bearer ' + token }
+
+    function budgetExists() {
+        if (budget.length < 1) {
+            return false
+        }
+        return true
+    }
+
+    function trackerExists() {
+        if (tracker.length < 1) {
+            return false
+        }
+        return true
+    }
 
     useEffect(() => {
         if (isAuth) {
@@ -38,8 +51,18 @@ function DashboardPage({ isAuth }) {
         <main className='main-dp'>
             <h1 className='main-dp__title'>Welcome to your Dashboard</h1>
             <section className='main-dp__menu'>
-                <div>Budget</div>
-                <div>Tracker</div>
+                <MenuOption
+                    title='Budget'
+                    copy='Plan your monthly expenses'
+                    enableOpen={budgetExists()}
+                    enableNew={true}
+                />
+                <MenuOption
+                    title='Tracker'
+                    copy='Get control of your monthly expenses'
+                    enableOpen={trackerExists()}
+                    enableNew={budgetExists()}
+                />
             </section>
         </main>
     );

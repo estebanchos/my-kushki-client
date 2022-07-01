@@ -1,0 +1,47 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.menu-option {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+
+    &__container {
+        width: 90%;
+        @include card-style;
+        background-color: $color-background-white;
+
+        @include tablet {
+            max-width: 800px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__copy {
+        margin: 0.5rem 1rem;
+    }
+
+    &__actions {
+        margin: 1rem auto;
+        display: flex;
+        width: fit-content
+    }
+
+    &__button-open {
+        @include button-style;
+        margin-right: 1rem;
+        background-color: $color-card-one;
+    }
+    &__button-new {
+        @include button-style;
+        background-color: $color-card-two;
+    }
+}
+
+.button-disabled {
+    cursor: not-allowed;
+    background-color: $color-border-card;
+}

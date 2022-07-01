@@ -34,7 +34,7 @@ function ModalNav({ isShowingNav, showNavModal }) {
                     </ul>
                 </li>
                 <li className='modal-nav__item'>
-                    <Link className='modal-nav__link' to='/do' onClick={showNavModal}>Do</Link>
+                    <Link className='modal-nav__link' to='/dashboard' onClick={showNavModal}>Do</Link>
                 </li>
                 <li className='modal-nav__item'>
                     <Link className='modal-nav__link' to='/contactus' onClick={showNavModal}>Contact Us</Link>
