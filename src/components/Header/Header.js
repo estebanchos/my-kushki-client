@@ -5,10 +5,14 @@ import Nav from '../Nav/Nav';
 import { Link } from 'react-router-dom';
 import ModalNav from '../ModalNav/ModalNav';
 
-function Header({ isAuth }) {
+function Header({ isAuth, userLoggedOut }) {
 
     const [isShowingNav, setShowNav] = useState(false)
     const showNavModal = () => setShowNav(!isShowingNav)
+    const logOut = () => {
+        sessionStorage.removeItem('token')
+        userLoggedOut()
+    }
 
     return (
         <div className='container'>
@@ -18,7 +22,14 @@ function Header({ isAuth }) {
                         <span className='header__logo'>my Kushki</span>
                     </Link>
                     <div className='header__top-right'>
-                        <Link to='/login' className='header__auth'>{isAuth ? 'Log Out' : 'Log In'}</Link>
+                        <Link
+                            to='/login'
+                            className={`header__auth ${isAuth ? 'header__auth--hide' : ''}`}
+                        >Log In</Link>
+                        <button
+                            className={`header__auth ${isAuth ? '' : 'header__auth--hide'}`}
+                            onClick={logOut}
+                        >Log Out</button>
                         <Hamburger toggled={isShowingNav} toggle={setShowNav} color='#fff' rounded label='Show navigation menu' />
                     </div>
                 </div>

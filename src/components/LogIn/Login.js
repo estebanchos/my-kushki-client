@@ -6,7 +6,7 @@ import InvalidInput from '../InvalidInput/InvalidInput';
 import axios from 'axios';
 import { devUrl } from '../../utils/api'
 
-function Login() {
+function Login({ userLoggedIn }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
@@ -22,7 +22,8 @@ function Login() {
                 .then(res => {
                     setEmail('')
                     setPassword('')
-                    // setTimeout(() => redirectToLogin(), 2000)
+                    sessionStorage.setItem('token', res.data.token)
+                    userLoggedIn(true)
                 })
                 .catch(err => {
                     setValidLogin(err.response.data.validLogin)

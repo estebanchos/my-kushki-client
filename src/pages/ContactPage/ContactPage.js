@@ -2,7 +2,7 @@ import './ContactPage.scss';
 import { useState } from 'react';
 import Chat from '../../components/Chat/Chat';
 
-function ContactPage() {
+function ContactPage({ isAuth }) {
     const [username, setUsername] = useState('')
     const [room, setRoom] = useState('')
     const [showChat, setShowChat] = useState(false)
@@ -18,6 +18,10 @@ function ContactPage() {
 
     const handleRoomChange = (e) => {
         setRoom(e.target.value)
+    }
+
+    if (!isAuth) {
+        return <div>Sign in please</div>
     }
 
     return (

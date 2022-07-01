@@ -46,7 +46,15 @@
         padding: 0.35rem 0.75rem;
         margin-right: 1rem;
         font-size: 1rem;
+
+        &--hide{
+            display: none;
+        }
     }
+}
+
+button.header__auth {
+    border: none;
 }
 
 .hamburger-react {

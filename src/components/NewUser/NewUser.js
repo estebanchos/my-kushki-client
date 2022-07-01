@@ -120,9 +120,9 @@ function NewUser(props) {
                     Sign Up
                 </button>
             </div>
-            <div className='login'>
-                <p className='login__copy'>Already have an account?</p>
-                <Link className='login__link' to='/signin'>Sign In</Link>
+            <div className='login-redirect'>
+                <p className='login-redirect__copy'>Already have an account?</p>
+                <Link className='login-redirect__link' to='/login'>Sign In</Link>
             </div>
         </main>
     );

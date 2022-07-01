@@ -12,7 +12,6 @@ import LearnPage from './pages/LearnPage/LearnPage';
 function App() {
 
   const [isAuth, setIsAuth] = useState(false)
-
   const userLoggedIn = () => setIsAuth(true)
   const userLoggedOut = () => setIsAuth(false)
 
@@ -25,11 +24,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header isAuth={isAuth} />
+        <Header isAuth={isAuth} userLoggedOut={userLoggedOut} />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/register' component={NewUser} />
-          <Route path='/login' component={Login} />
+          <Route path='/login' render={(props) => <Login userLoggedIn={userLoggedIn} {...props} />} />
           <Route path='/learn' component={LearnPage} />
           <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
           <Route path='/do' render={(props) => <DoPage isAuth={isAuth} {...props} />} />
