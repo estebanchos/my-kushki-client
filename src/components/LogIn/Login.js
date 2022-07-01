@@ -4,7 +4,7 @@ import hideIcon from '../../assets/icons/hide.svg';
 import showIcon from '../../assets/icons/show.svg';
 import InvalidInput from '../InvalidInput/InvalidInput';
 import axios from 'axios';
-import { devUrl } from '../../utils/api'
+import { apiUrl } from '../../utils/api'
 
 function Login({ userLoggedIn }) {
     const [email, setEmail] = useState('')
@@ -15,7 +15,7 @@ function Login({ userLoggedIn }) {
 
     const handleSubmit = () => {
         if (email && password) {
-            axios.post(`${devUrl}/users/login`, {
+            axios.post(`${apiUrl}/users/login`, {
                 email,
                 password
             })

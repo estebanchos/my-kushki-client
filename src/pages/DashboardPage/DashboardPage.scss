@@ -1,0 +1,19 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.main-dp {
+    margin: 1rem 2rem;
+    @include font-family-body;
+
+    @include tablet {
+        margin: 1.5rem 2.5rem;
+    }
+
+    @include desktop {
+        @include desktop-fixed-size;
+    }
+
+    &__title {
+        @include font-family-title
+    }
+}

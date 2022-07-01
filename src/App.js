@@ -2,7 +2,7 @@ import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ContactPage from './pages/ContactPage/ContactPage';
 import NewUser from './components/NewUser/NewUser';
-import DoPage from './pages/DoPage/DoPage'
+import DashboardPage from './pages/DashboardPage/DashboardPage'
 import Header from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import HomePage from './pages/HomePage/HomePage';
@@ -31,7 +31,7 @@ function App() {
           <Route path='/login' render={(props) => <Login userLoggedIn={userLoggedIn} {...props} />} />
           <Route path='/learn' component={LearnPage} />
           <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
-          <Route path='/do' render={(props) => <DoPage isAuth={isAuth} {...props} />} />
+          <Route path='/do' render={(props) => <DashboardPage isAuth={isAuth} {...props} />} />
         </Switch>
       </BrowserRouter>
     </div>

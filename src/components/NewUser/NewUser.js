@@ -1,7 +1,7 @@
 import './NewUser.scss';
 import axios from 'axios';
 import { useState } from 'react';
-import { apiUrl, devUrl } from '../../utils/api'
+import { apiUrl } from '../../utils/api'
 import { Link } from 'react-router-dom';
 import InvalidInput from '../InvalidInput/InvalidInput';
 import hideIcon from '../../assets/icons/hide.svg'
@@ -24,7 +24,7 @@ function NewUser(props) {
                 email,
                 password
             }
-            axios.post(`${devUrl}/users/newUser`, newUser)
+            axios.post(`${apiUrl}/users/newUser`, newUser)
                 .then(res => {
                     setName('')
                     setEmail('')
