@@ -4,36 +4,36 @@ import { currentTime } from '../../utils/date'
 import ScrollToBottom from 'react-scroll-to-bottom';
 import io from 'socket.io-client';
 
-const ENDPOINT = 'localhost:8080'
-const socket = io.connect(ENDPOINT)
+// const ENDPOINT = 'localhost:8080'
+// const socket = io.connect(ENDPOINT)
 
 function Chat({ showChat, username, room }) {
     const [currentMessage, setCurrentMessage] = useState('')
     const [messageList, setMessageList] = useState([])
 
-    const sendMessage = () => {
-        if (currentMessage !== '') {
-            const data = {
-                room: room,
-                author: username,
-                message: currentMessage,
-                time: currentTime()
-            }
-            socket.emit('send_message', data)
-            setCurrentMessage('')
-            setMessageList([...messageList, data])
-        }
-    }
+    // const sendMessage = () => {
+    //     if (currentMessage !== '') {
+    //         const data = {
+    //             room: room,
+    //             author: username,
+    //             message: currentMessage,
+    //             time: currentTime()
+    //         }
+    //         socket.emit('send_message', data)
+    //         setCurrentMessage('')
+    //         setMessageList([...messageList, data])
+    //     }
+    // }
 
-    useEffect(() => {
-        socket.on('receive_message', (data) => {
-            setMessageList([...messageList, data])
-        })
-    },[socket, messageList])
+    // useEffect(() => {
+    //     socket.on('receive_message', (data) => {
+    //         setMessageList([...messageList, data])
+    //     })
+    // },[socket, messageList])
 
-    useEffect(() => {
-        socket.on('join', {username, room})
-    }, [])
+    // useEffect(() => {
+    //     socket.on('join', {username, room})
+    // }, [])
 
     return (
         <div className={`chat${showChat ? '' : '--hidden'}`}>
@@ -76,14 +76,14 @@ function Chat({ showChat, username, room }) {
                 </ScrollToBottom>
             </div >
             <div className='chat__footer'>
-                <input
+                {/* <input
                     className='chat__input'
                     value={currentMessage}
                     placeholder='Enter message...'
                     onChange={(e) => setCurrentMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
                 />
-                <button onClick={sendMessage}>&#9658;</button>
+                <button onClick={sendMessage}>&#9658;</button> */}
             </div>
         </div >
     );

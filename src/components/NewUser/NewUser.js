@@ -4,14 +4,18 @@ import { useState } from 'react';
 import { apiUrl, devUrl } from '../../utils/api'
 import { Link } from 'react-router-dom';
 import InvalidInput from '../InvalidInput/InvalidInput';
+import hideIcon from '../../assets/icons/hide.svg'
+import showIcon from '../../assets/icons/show.svg'
 
-function NewUser() {
+function NewUser(props) {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
     const [isValidName, setValidName] = useState(true)
     const [isValidEmail, setValidEmail] = useState(true)
     const [isValidPassword, setValidPassword] = useState(true)
+    const [isRegistered, setRegistered] = useState(false)
 
     const handleSubmit = () => {
         if (isSignupValid()) {
@@ -22,11 +26,17 @@ function NewUser() {
             }
             axios.post(`${devUrl}/users/newUser`, newUser)
                 .then(res => {
-                    console.log(res)
+                    setName('')
+                    setEmail('')
+                    setPassword('')
+                    setRegistered(res.data.successSignUp)
+                    setTimeout(() => redirectToLogin(), 2000)
                 })
                 .catch(err => console.error(err))
         }
     }
+
+    const redirectToLogin = () => props.history.push('/login')
 
     const isSignupValid = () => {
         let isValid = true
@@ -84,11 +94,26 @@ function NewUser() {
                 <input
                     className='register__input'
                     placeholder='Password'
-                    type='password'
+                    type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <div className='show-password'>
+                    <img
+                        className={`show-password__icon${!showPassword ? '--active' : '--hide'}`}
+                        src={showIcon}
+                        alt='show password icon'
+                        onClick={() => setShowPassword(!showPassword)}
+                    />
+                    <img
+                        className={`show-password__icon${showPassword ? '--active' : '--hide'}`}
+                        src={hideIcon}
+                        alt='hide password icon'
+                        onClick={() => setShowPassword(!showPassword)}
+                    />
+                </div>
                 <InvalidInput isValid={isValidPassword} message='Password must have at least 5 characters' />
+                <p className={`success-message${isRegistered ? '--active' : '--hidden'}`}>Successful Sign Up! Redirecting to login!</p>
                 <button
                     className='register__button'
                     onClick={handleSubmit}>

@@ -11,6 +11,7 @@
     @include desktop {
         @include desktop-fixed-size;
     }
+
     &__title {
         @include font-family-title;
         margin-bottom: 0.75rem;
@@ -45,13 +46,47 @@
 
 .login {
     margin-bottom: 2rem;
+
     &__copy {
         margin: 0;
     }
+
     &__link {
         margin: 1rem 0;
         color: $color-font-primary;
         font-weight: 600;
         text-decoration: underline;
+    }
+}
+
+.success-message {
+    &--hidden {
+        display: none;
+    }
+
+    &--active {
+        margin: 0.5rem 3rem 0 3rem;
+        color: $color-font-titles;
+        font-weight: 600;
+    }
+}
+
+.show-password {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2.5rem;
+    position: relative;
+
+    &__icon {
+        &--active {
+            position: relative;
+            top: -44px;
+            width: 1.5rem;
+        }
+
+        &--hide {
+            display: none;
+            width: 1.5rem;
+        }
     }
 }
