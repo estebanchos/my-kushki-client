@@ -1,0 +1,19 @@
+@use '../../styles/partials/colors' as *;
+
+.error-message {
+    display: flex;
+    // margin-top: 0.25rem;
+    margin: 0.2rem 2rem 0.5rem 2rem;
+    align-items: flex-start;
+    &__icon {
+        margin-right: 0.25rem;
+    }
+    &__message {
+        margin: 0;
+        color: $color-error-message;
+        text-align: left;
+    }
+    &--hidden {
+        display: none;
+    }
+}

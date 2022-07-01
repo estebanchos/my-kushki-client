@@ -1,3 +1,5 @@
+@use './colors' as *;
+
 @mixin tablet {
     @media (min-width: 768px) {
         @content;
@@ -27,8 +29,8 @@
 }
 
 @mixin card-style {
-    border: 1px solid #bfbdbb;
-    box-shadow: 0 0 5px #bfbdbb;
+    border: 1px solid $color-border-card;
+    box-shadow: 0 0 5px $color-border-card;
     border-radius: 1rem;
 }
 
@@ -42,4 +44,15 @@
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+}
+
+@mixin button-style {
+    color: $color-font-secondary;
+    border-radius: 3rem;
+    border:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1rem;
 }

@@ -6,6 +6,7 @@ html {
     font-size: 100%;
     box-sizing: border-box;
     margin: 0;
+    overflow-x: hidden;
   }
   
   * {
@@ -15,6 +16,9 @@ html {
   body {
     margin: 0;
     background-color: $color-background-white;
+    position: relative;
+    overflow-x: hidden;
+    height: 100vh;
   }
 
   a {
