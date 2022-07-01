@@ -1,0 +1,46 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.login {
+    @include font-family-body;
+    @include card-style;
+    width: 80%;
+    margin: 2rem auto;
+    background-color: #fff;
+
+    @include desktop {
+        @include desktop-fixed-size;
+    }
+
+    &__title {
+        @include font-family-title;
+        margin-bottom: 0.75rem;
+    }
+
+    &__copy {
+        @include font-family-body;
+        margin: 0.5rem 2rem;
+        margin-bottom: 1rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        margin: 0.5rem 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid $color-border-card;
+        font-weight: 600;
+    }
+
+    &__button {
+        @include button-style;
+        width: fit-content;
+        margin: 2rem auto;
+        margin-top: 1rem;
+        background-color: $color-card-one;
+    }
+}
