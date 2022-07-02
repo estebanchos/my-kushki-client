@@ -17,3 +17,15 @@
         @include font-family-title
     }
 }
+
+.show-new-budget {
+    &--hidden {
+        display: none;
+    }
+}
+
+.show-budget {
+    &--hidden {
+        display: none;
+    }
+}

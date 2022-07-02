@@ -4,13 +4,15 @@ import axios from 'axios';
 import { apiUrl } from '../../utils/api'
 import MenuOption from '../../components/MenuOption/MenuOption';
 import NewBudget from '../../components/NewBudget/NewBudget';
+import Budget from '../../components/Budget/Budget';
 
 function DashboardPage({ isAuth }) {
 
     const [budget, setBudget] = useState([])
     const [tracker, setTracker] = useState([])
     const [newBudgetModal, setNewBudgetModal] = useState(false)
-    const [newTrackerModal, setNewTrackerModal] = useState(false)
+    const [showExistingBudget, setShowExistingBudget] = useState(false)
+    // const [newTrackerModal, setNewTrackerModal] = useState(false)
 
     const token = sessionStorage.getItem('token')
     const authHeader = { Authorization: 'Bearer ' + token }
@@ -29,12 +31,14 @@ function DashboardPage({ isAuth }) {
         return true
     }
 
+    const startNewBudget = () => setNewBudgetModal(true)
+    const openExistingBudget = () => setShowExistingBudget(true)
+
     useEffect(() => {
         if (isAuth) {
             axios.get(apiUrl + '/users/budget', { headers: authHeader })
                 .then(res => {
                     setBudget(res.data)
-
                     axios.get(apiUrl + '/users/expenses', { headers: authHeader })
                         .then(res => {
                             setTracker(res.data)
@@ -57,6 +61,8 @@ function DashboardPage({ isAuth }) {
                     copy='Plan your monthly expenses'
                     enableOpen={budgetExists()}
                     enableNew={true}
+                    startNew={startNewBudget}
+                    openExisting={openExistingBudget}
                 />
                 <MenuOption
                     title='Tracker'
@@ -65,7 +71,17 @@ function DashboardPage({ isAuth }) {
                     enableNew={budgetExists()}
                 />
             </section>
-            <NewBudget />
+            <div className={newBudgetModal ? '' : 'show-new-budget--hidden'}>
+                <NewBudget
+                    budget={budget}
+                    setBudget={setBudget}
+                    authHeader={authHeader}
+                    showNewBudget={newBudgetModal}
+                />
+            </div>
+            <div className={newBudgetModal || showExistingBudget ? '' : 'show-budget--hidden'}>
+                <Budget budget={budget} />
+            </div>
         </main>
     );
 }

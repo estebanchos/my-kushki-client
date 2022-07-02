@@ -3,7 +3,7 @@
 
 .new-budget {
     @include card-style;
-    background-color: $color-background-white;
+    background-color: #e8eff8;
 
     @include tablet {
         margin: 0 1rem;
@@ -11,6 +11,9 @@
 
     @include desktop {
         margin: 0 3rem;
+    }
+    &--hidden {
+        display: none;
     }
 
     &__title {
@@ -81,7 +84,8 @@
         width: fit-content;
         margin: 0.5rem;
         padding: 0.25rem 0.4rem;
-        background-color: #fff;
+        background-color: $color-font-primary;
+        color: $color-font-secondary;
         border-radius: 1rem;
         border: 1px solid $color-border-card;
         cursor: pointer;
@@ -96,5 +100,4 @@
         width: 1.5rem;
     }
 
-    &__cta {}
 }
