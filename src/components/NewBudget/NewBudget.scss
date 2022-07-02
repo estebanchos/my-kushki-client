@@ -1,0 +1,100 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.new-budget {
+    @include card-style;
+    background-color: $color-background-white;
+
+    @include tablet {
+        margin: 0 1rem;
+    }
+
+    @include desktop {
+        margin: 0 3rem;
+    }
+
+    &__title {
+        @include font-family-title;
+    }
+
+    &__list {
+        text-align: left;
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__list-item {
+        padding-left: 0.25rem;
+        padding-right: 1rem;
+    }
+}
+
+.budget-inputs {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__inputs-container {
+        display: flex;
+    }
+
+    &__amount-container {
+        margin: 0 0.5rem;
+    }
+
+    &__amount {
+        margin: 0;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid $color-border-card;
+        width: 7rem;
+
+        @include tablet {
+            width: 9rem;
+        }
+
+        &::placeholder {
+            color: $color-font-primary;
+        }
+    }
+
+    &__action-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: fit-content;
+        width: fit-content;
+        margin: 0.5rem;
+        padding: 0.25rem 0.4rem;
+        background-color: #fff;
+        border-radius: 1rem;
+        border: 1px solid $color-border-card;
+        cursor: pointer;
+
+        @include tablet {
+            margin: 0;
+            margin-left: 0.25rem;
+        }
+    }
+
+    &__icon {
+        width: 1.5rem;
+    }
+
+    &__cta {}
+}

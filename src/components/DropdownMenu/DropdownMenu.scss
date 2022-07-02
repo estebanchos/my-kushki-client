@@ -1,0 +1,20 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.dropdown-container {
+    &__dropdown{
+        width: 9rem;
+        margin: 0;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid $color-border-card;
+        appearance: none;
+        background-image: url(../../assets/icons/expand-dark.svg);
+        background-size: 1.25rem;
+        background-repeat: no-repeat;
+        background-position: right .75rem center;
+        @include tablet {
+            width: 11rem;
+        }
+    }
+}

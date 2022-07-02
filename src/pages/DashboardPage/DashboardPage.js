@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api'
 import MenuOption from '../../components/MenuOption/MenuOption';
+import NewBudget from '../../components/NewBudget/NewBudget';
 
 function DashboardPage({ isAuth }) {
 
@@ -59,11 +60,12 @@ function DashboardPage({ isAuth }) {
                 />
                 <MenuOption
                     title='Tracker'
-                    copy='Get control of your monthly expenses'
+                    copy={`Get control of your monthly expenses${!budgetExists() ? '. Create a budget first, then you can start tracking your expenses' : ''}`}
                     enableOpen={trackerExists()}
                     enableNew={budgetExists()}
                 />
             </section>
+            <NewBudget />
         </main>
     );
 }
