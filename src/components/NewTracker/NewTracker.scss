@@ -41,7 +41,7 @@
 
 .new-expense {
     @include card-style;
-    background-color: #e8eff8;
+    background-color: $color-background-secondary;
 
     @include tablet {
         margin: 0 1rem;

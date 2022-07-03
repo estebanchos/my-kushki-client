@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import HomePage from './pages/HomePage/HomePage';
 import Login from './components/LogIn/Login';
 import LearnPage from './pages/LearnPage/LearnPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
           <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} {...props} />} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );

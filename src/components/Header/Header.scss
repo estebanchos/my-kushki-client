@@ -37,7 +37,7 @@
 
     &__auth {
         @include font-family-body;
-        background-color: $color-background-dark;
+        background-color: $color-button-login;
         color: $color-font-secondary;
         border-radius: 3rem;
         display: flex;
