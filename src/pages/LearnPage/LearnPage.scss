@@ -1,0 +1,36 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.main-lp {
+    &__title {
+        @include font-family-title;
+        font-size: 3rem;
+    }
+
+    &__intro-container {
+        margin: 0 1rem;
+    }
+
+    &__learning-paths {
+        margin-top: 3rem;
+    }
+
+    &__path {
+        margin: 1rem 0;
+    }
+}
+
+.path {
+    &__title {
+        @include font-family-title;
+        font-size: 1.5rem;
+        color: $color-font-titles;
+    }
+
+    &__carousel {
+        display: flex;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        padding-left: 1.5rem;
+    }
+}

@@ -4,13 +4,30 @@
 .new-tracker {
     &__title {
         @include font-family-title;
-        font-size: 2rem;
     }
 
-    &__container {}
+    &__container {
+
+        @include desktop {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+    }
 
     &__budget-tracker {
         margin-bottom: 2rem;
+
+        @include desktop {
+            width: 25rem;
+        }
+    }
+
+    &__expenses-container {
+        @include desktop {
+            margin-right: 2rem;
+            display: flex;
+            flex-direction: column-reverse;
+        }
     }
 
     &__expenses-tracker {
@@ -31,11 +48,12 @@
     }
 
     @include desktop {
-        margin: 0 3rem;
+        margin: 0;
     }
 
     &__title {
         @include font-family-title;
+
         @include tablet {
             margin-bottom: 0.5rem;
         }
@@ -78,9 +96,14 @@
         border-radius: 1rem;
         border: 1px solid $color-border-card;
         width: 13rem;
+
         @include tablet {
             margin-top: 0;
             margin-bottom: 0;
+        }
+
+        @include desktop {
+            width: 10rem;
         }
     }
 
@@ -97,6 +120,10 @@
 
         @include tablet {
             width: 13rem;
+        }
+
+        @include desktop {
+            width: 10rem;
         }
 
         &::placeholder {
@@ -137,6 +164,10 @@
 
     &__title {
         @include font-family-title;
+
+        @include desktop {
+            margin-bottom: 0.5rem;
+        }
     }
 
     &__table {
@@ -149,12 +180,17 @@
             margin: 1rem 2rem;
             margin-bottom: 2rem;
         }
+
+        @include desktop {
+            margin-top: 0.5rem;
+        }
     }
 
     &__labels {
         padding: 1rem 0;
         margin: 0 1rem;
         border-bottom: 1px solid $color-border-card;
+
         @include tablet {
             margin: 0.5rem 1rem;
         }
@@ -168,5 +204,37 @@
 .budget-category {
     &--over {
         color: $color-error-message;
+    }
+}
+
+.expenses-budget {
+    &__container {
+        @include card-style;
+    }
+
+    &__title {
+        @include font-family-title;
+    }
+
+    &__table {
+        margin: 1rem;
+        list-style: none;
+        padding: 0;
+    }
+
+    &__labels {
+        padding: 1rem 0;
+        margin: 0 1.5rem;
+        border-bottom: 1px solid $color-border-card;
+    }
+
+    &__item {
+        margin: 0.5rem 1.5rem;
+    }
+
+    &__total {
+        margin: 1rem 1.5rem;
+        padding: 1rem 0;
+        border-top: 2px solid $color-border-card;
     }
 }

@@ -1,0 +1,40 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.topic-card {
+    @include card-style;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 14rem;
+    padding: 2rem;
+    margin: 0 1rem;
+    text-align: left;
+
+    &--1{
+        background-color: $color-card-one;
+    }
+    &--2{
+        background-color: $color-card-two;
+    }
+    &--3{
+        background-color: $color-card-three;
+    }
+    &--4{
+        background-color: $color-card-four;
+    }
+
+    &__title {
+        margin: 0;
+        @include font-family-title;
+        font-size: 1.5rem;
+        color: $color-font-secondary
+    }
+    &__description {
+        margin: 0;
+        margin-top: 2rem;
+        font-size: 1.25rem;
+        @include font-family-body;
+        color: $color-font-secondary
+    }
+}

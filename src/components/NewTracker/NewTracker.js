@@ -77,10 +77,10 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
             <h1 className='new-tracker__title'>Track your monthly expenses</h1>
             <div className='new-tracker__container'>
                 <section className='new-tracker__budget-tracker'>
-                    <article className='budget__container'>
-                        <h2 className='budget__title'>Remaining Budget</h2>
-                        <ul className='budget__table'>
-                            <li className='budget__labels'>
+                    <article className='expenses-budget__container'>
+                        <h2 className='expenses-budget__title'>Remaining Budget</h2>
+                        <ul className='expenses-budget__table'>
+                            <li className='expenses-budget__labels'>
                                 <ul className='labels'>
                                     <li className='labels__label'>Category</li>
                                     <li className='labels__label'>Plan</li>
@@ -89,7 +89,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                             </li>
                             {budgetTracking?.map((item, index) => {
                                 return (
-                                    <li key={index} className='budget__item'>
+                                    <li key={index} className='expenses-budget__item'>
                                         <ul className='item'>
                                             <li className='item__value'>{item.category}</li>
                                             <li className='item__value'>
@@ -113,7 +113,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                                     </li>
                                 )
                             })}
-                            <li className='budget__total'>
+                            <li className='expenses-budget__total'>
                                 <ul className='total'>
                                     <li className='total__text'>Total</li>
                                     <li className='total__value'>
@@ -137,82 +137,84 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                         </ul>
                     </article>
                 </section>
-                <section className='new-tracker__expenses-tracker'>
-                    <article className='expenses__container'>
-                        <h2 className='expenses__title'>Your Expenses</h2>
-                        <ul className='expenses__table'>
-                            <li className='expenses__labels'>
-                                <ul className='labels'>
-                                    <li className='labels__label'>Category</li>
-                                    <li className='labels__label'>Item</li>
-                                    <li className='labels__label'>Amount</li>
-                                </ul>
-                            </li>
-                            {tracker?.map((item, index) => {
-                                return (
-                                    <li key={index} className='expenses__item'>
-                                        <ul className='item'>
-                                            <li className='item__value'>{item.category}</li>
-                                            <li className='item__value'>{item.item}</li>
-                                            <li className='item__value'>
-                                                <NumberFormat
-                                                    displayType={'text'}
-                                                    thousandSeparator={true}
-                                                    prefix={'$'}
-                                                    value={item.amount}
-                                                />
-                                            </li>
-                                        </ul>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </article>
-                </section>
-                <section className='new-tracker__expenses-input'>
-                    <div className='new-expense'>
-                        <h2 className='new-expense__title'>New Expense</h2>
-                        <div className='expense-inputs'>
-                            <div className='expense-inputs__inputs'>
-                                <div className='expense-inputs__inputs-container'>
-                                    <DropdownMenu
-                                        expenseClassName='--expenses'
-                                        options={categoriesList}
-                                        value={selectedCategory}
-                                        onChange={setSelectedCategory}
-                                    />
-                                    <input
-                                        className='expense-inputs__item'
-                                        name='item'
-                                        id='item'
-                                        placeholder='Item...'
-                                        value={expenseItem}
-                                        onChange={(e) => setExpenseItem(e.target.value)}
-                                    />
-                                    <div className='expense-inputs__amount-container'>
-                                        <NumberFormat
-                                            className='expense-inputs__amount'
-                                            placeholder='Amount...'
-                                            displayType={'input'}
-                                            prefix={'$'}
-                                            thousandSeparator={true}
-                                            value={expenseAmount}
-                                            onValueChange={(values) => {
-                                                const { formattedValue, value } = values
-                                                setExpenseAmount(value)
-                                            }}
+                <div className='new-tracker__expenses-container'>
+                    <section className='new-tracker__expenses-tracker'>
+                        <article className='expenses__container'>
+                            <h2 className='expenses__title'>Your Expenses</h2>
+                            <ul className='expenses__table'>
+                                <li className='expenses__labels'>
+                                    <ul className='labels'>
+                                        <li className='labels__label'>Category</li>
+                                        <li className='labels__label'>Item</li>
+                                        <li className='labels__label'>Amount</li>
+                                    </ul>
+                                </li>
+                                {tracker?.map((item, index) => {
+                                    return (
+                                        <li key={index} className='expenses__item'>
+                                            <ul className='item'>
+                                                <li className='item__value'>{item.category}</li>
+                                                <li className='item__value'>{item.item}</li>
+                                                <li className='item__value'>
+                                                    <NumberFormat
+                                                        displayType={'text'}
+                                                        thousandSeparator={true}
+                                                        prefix={'$'}
+                                                        value={item.amount}
+                                                    />
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </article>
+                    </section>
+                    <section className='new-tracker__expenses-input'>
+                        <div className='new-expense'>
+                            <h2 className='new-expense__title'>New Expense</h2>
+                            <div className='expense-inputs'>
+                                <div className='expense-inputs__inputs'>
+                                    <div className='expense-inputs__inputs-container'>
+                                        <DropdownMenu
+                                            expenseClassName='--expenses'
+                                            options={categoriesList}
+                                            value={selectedCategory}
+                                            onChange={setSelectedCategory}
                                         />
-                                        {/* <InvalidInput isValid={isValidAmount} message='Please enter a valid number' /> */}
+                                        <input
+                                            className='expense-inputs__item'
+                                            name='item'
+                                            id='item'
+                                            placeholder='Item...'
+                                            value={expenseItem}
+                                            onChange={(e) => setExpenseItem(e.target.value)}
+                                        />
+                                        <div className='expense-inputs__amount-container'>
+                                            <NumberFormat
+                                                className='expense-inputs__amount'
+                                                placeholder='Amount...'
+                                                displayType={'input'}
+                                                prefix={'$'}
+                                                thousandSeparator={true}
+                                                value={expenseAmount}
+                                                onValueChange={(values) => {
+                                                    const { formattedValue, value } = values
+                                                    setExpenseAmount(value)
+                                                }}
+                                            />
+                                            {/* <InvalidInput isValid={isValidAmount} message='Please enter a valid number' /> */}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='expense-inputs__action-container' onClick={handleSubmit}>
-                                    <img className='expense-inputs__icon' src={addIcon} alt='add item icon' />
-                                    <span className='expense-inputs__cta'>Add</span>
+                                    <div className='expense-inputs__action-container' onClick={handleSubmit}>
+                                        <img className='expense-inputs__icon' src={addIcon} alt='add item icon' />
+                                        <span className='expense-inputs__cta'>Add</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </section>
     );

@@ -24,6 +24,13 @@
 
     &__copy {
         margin: 0;
+        margin-top: 1rem;
+        @include font-family-body;
+        font-size: 1.3125rem;
+    }
+    &__next-steps {
+        margin: 0;
+        margin-top: 1rem;
         @include font-family-body;
         font-size: 1.3125rem;
     }
