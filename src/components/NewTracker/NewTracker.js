@@ -30,7 +30,6 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                 } else {
                     let categoryAmountsOnly = categoryExpenses.map(expense => expense.amount)
                     catTotal = categoryAmountsOnly.reduce((a, b) => a + b)
-                    console.log(catTotal)
                 }
             }
             let catTotalSpend = {
