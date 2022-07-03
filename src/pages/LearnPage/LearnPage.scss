@@ -2,6 +2,19 @@
 @use '../../styles/partials/colors' as *;
 
 .main-lp {
+    @include tablet {
+        margin: 0 1.5rem;
+    }
+    @include desktop {
+        // @include desktop-fixed-size;
+        // margin: 0 auto;
+    }
+    &__main-container {
+        @include desktop {
+            @include desktop-fixed-size;
+            // margin: 0 auto;
+        }   
+    }
     &__title {
         @include font-family-title;
         font-size: 3rem;
@@ -32,5 +45,10 @@
         overflow-x: scroll;
         scroll-behavior: smooth;
         padding-left: 1.5rem;
+        @include desktop {
+            overflow-x: visible;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }
