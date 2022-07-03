@@ -28,7 +28,9 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                 if (categoryExpenses.length === 1) {
                     catTotal = categoryExpenses[0].amount
                 } else {
-                    catTotal = categoryExpenses.reduce((a, b) => Number(a.amount) + Number(b.amount))
+                    let categoryAmountsOnly = categoryExpenses.map(expense => expense.amount)
+                    catTotal = categoryAmountsOnly.reduce((a, b) => a + b)
+                    console.log(catTotal)
                 }
             }
             let catTotalSpend = {
@@ -37,6 +39,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
             }
             return catTotalSpend
         })
+        
         // create a new array that holds category name, plan amount and remaining amount
         budgetTracking = budget.map(category => {
             let currentCategory = (categoriesActualSpend.find(item => item.category === category.category))
@@ -46,10 +49,6 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                 plan: category.amount,
                 remaining: Number(category.amount) - Number(currentCategorySpend)
             }
-            // console.log(category.amount)
-            // console.log(currentCategory)
-            // console.log(currentCategorySpend)
-            // console.log(category.amount - currentCategorySpend)
             return trackedCategory
         })
     }
