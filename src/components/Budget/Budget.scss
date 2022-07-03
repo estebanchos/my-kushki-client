@@ -19,14 +19,14 @@ ul.budget__table, ul.labels, ul.item, ul.total {
     }
     &__labels {
         padding: 1rem 0;
-        margin: 0 2rem;
+        margin: 0 1.5rem;
         border-bottom: 1px solid $color-border-card;
     }
     &__item {
-        margin: 0.5rem 2rem;
+        margin: 0.5rem 1.5rem;
     }
     &__total {
-        margin: 1rem 2rem;
+        margin: 1rem 1.5rem;
         padding: 1rem 0;
         border-top: 2px solid $color-border-card;
     }
@@ -41,6 +41,14 @@ ul.budget__table, ul.labels, ul.item, ul.total {
 .item {
     display: flex;
     justify-content: space-between;
+    &__value {
+        width: 5rem;
+        overflow-x: hidden;
+        @include tablet {
+            width: 10rem;
+            overflow-x: revert;
+        }
+    }
 }
 
 .total {

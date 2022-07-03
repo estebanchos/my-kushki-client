@@ -9,7 +9,7 @@ import axios from 'axios';
 import { apiUrl } from '../../utils/api'
 
 
-function NewBudget({ budget, setBudget, authHeader, showNewBudget }) {
+function NewBudget({ budget, setBudget, authHeader }) {
 
     let categoriesList = budgetCategories
     const [selectedCategory, setSelectedCategory] = useState('')
@@ -29,14 +29,14 @@ function NewBudget({ budget, setBudget, authHeader, showNewBudget }) {
                     let deleteIndex = categoriesList.indexOf(selectedCategory)
                     categoriesList.splice(deleteIndex, 1)
                     setSelectedCategory('')
-                    setCategoryAmount(null)
+                    setCategoryAmount(0)
                 })
                 .catch(err => console.error(err))
         }
     }
 
     return (
-        <section className={`new-budget ${showNewBudget ? '' : 'new-budget--hidden'}`}>
+        <section className='new-budget'>
             <h2 className='new-budget__title'>Create your Budget</h2>
             <ul className='new-budget__list'>
                 <li className='new-budget__list-item'>Look at your expenses</li>

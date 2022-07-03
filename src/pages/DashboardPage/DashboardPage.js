@@ -5,6 +5,7 @@ import { apiUrl } from '../../utils/api'
 import MenuOption from '../../components/MenuOption/MenuOption';
 import NewBudget from '../../components/NewBudget/NewBudget';
 import Budget from '../../components/Budget/Budget';
+import NewTracker from '../../components/NewTracker/NewTracker';
 
 function DashboardPage({ isAuth }) {
 
@@ -12,6 +13,8 @@ function DashboardPage({ isAuth }) {
     const [tracker, setTracker] = useState([])
     const [newBudgetModal, setNewBudgetModal] = useState(false)
     const [showExistingBudget, setShowExistingBudget] = useState(false)
+    const [newTrackerModal, setNewTrackerModal] = useState(false)
+    const [showExistingTracker, setShowExistingTracker] = useState(false)
     // const [newTrackerModal, setNewTrackerModal] = useState(false)
 
     const token = sessionStorage.getItem('token')
@@ -76,11 +79,17 @@ function DashboardPage({ isAuth }) {
                     budget={budget}
                     setBudget={setBudget}
                     authHeader={authHeader}
-                    showNewBudget={newBudgetModal}
                 />
             </div>
             <div className={newBudgetModal || showExistingBudget ? '' : 'show-budget--hidden'}>
                 <Budget budget={budget} />
+            </div>
+            <div className={newTrackerModal ? '' : 'show-new-tracker--hidden'}>
+                <NewTracker 
+                budget={budget} 
+                tracker={tracker}
+                setTracker={setTracker}
+                authHeader={authHeader} />
             </div>
         </main>
     );

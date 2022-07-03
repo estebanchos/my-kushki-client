@@ -31,7 +31,6 @@ function Budget({ budget }) {
                                             value={item.amount}
                                         />
                                     </li>
-
                                 </ul>
                             </li>
                         )

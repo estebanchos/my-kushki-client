@@ -1,10 +1,10 @@
 import './DropdownMenu.scss'
 
-function DropdownMenu( {options, value, onChange} ) {
+function DropdownMenu( {options, value, onChange, expenseClassName} ) {
     return (
         <div className='dropdown-container'>
             <select
-                className='dropdown-container__dropdown'
+                className={`${!expenseClassName ? 'dropdown-container__dropdown' : 'dropdown-container__dropdown' + expenseClassName}`}
                 name='category'
                 id='category'
                 value={value}

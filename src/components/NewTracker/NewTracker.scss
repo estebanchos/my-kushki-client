@@ -1,0 +1,140 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.new-tracker {
+    &__title {
+        @include font-family-title;
+        font-size: 2rem;
+    }
+    &__container {
+
+    }
+    &__budget-tracker {
+
+    }
+    &__expenses-tracker {
+
+    }
+    &__expenses-input {
+
+    }
+}
+
+.new-expense {
+    @include card-style;
+    background-color: #e8eff8;
+
+    @include tablet {
+        margin: 0 1rem;
+    }
+
+    @include desktop {
+        margin: 0 3rem;
+    }
+
+    &__title {
+        @include font-family-title;
+    }
+}
+
+.expense-inputs {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__inputs-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid $color-border-card;
+        width: 13rem;
+    }
+
+    &__amount-container {
+        margin: 0;
+    }
+
+    &__amount {
+        margin: 0;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid $color-border-card;
+        width: 13rem;
+
+        @include tablet {
+            width: 9rem;
+        }
+
+        &::placeholder {
+            color: $color-font-primary;
+        }
+    }
+
+    &__action-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: fit-content;
+        width: fit-content;
+        margin: 0.5rem;
+        padding: 0.25rem 0.4rem;
+        background-color: $color-font-primary;
+        color: $color-font-secondary;
+        border-radius: 1rem;
+        border: 1px solid $color-border-card;
+        cursor: pointer;
+
+        @include tablet {
+            margin: 0;
+            margin-left: 0.25rem;
+        }
+    }
+
+    &__icon {
+        width: 1.5rem;
+    }
+
+}
+
+.expenses {
+    &__container {
+        @include card-style;
+    }
+    &__title {
+        @include font-family-title;
+    }
+    &__table {
+        margin: 1rem 0;
+        margin-bottom: 2rem;
+        list-style: none;
+        padding: 0;
+        @include tablet {
+            margin: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+    &__labels {
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 1px solid $color-border-card;
+    }
+    &__item {
+        margin: 0.5rem;
+    }
+}
