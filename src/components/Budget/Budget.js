@@ -2,7 +2,7 @@ import NumberFormat from 'react-number-format';
 import './Budget.scss'
 
 function Budget({ budget }) {
-    const budgetAmountArray = budget.map(item => item.amount)
+    const budgetAmountArray = budget.map(item => Number(item.amount))
     let budgetTotal = 0
     if (budgetAmountArray.length > 0) {
         budgetTotal = budgetAmountArray?.reduce((a, b) => a + b)

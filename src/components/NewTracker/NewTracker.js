@@ -11,13 +11,47 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
     const [expenseAmount, setExpenseAmount] = useState(null)
     const [expenseItem, setExpenseItem] = useState('')
 
-    const budgetAmountArray = budget.map(item => item.amount)
+    const budgetAmountArray = budget.map(item => Number(item.amount))
     let budgetTotal = 0
     const budgetCategories = budget.map(item => item.category)
     let categoriesList = []
+    let categoriesActualSpend = [] // used to track how much spent on each category
+    let budgetTracking = [] // used to track budget category's plan and remaining amounts
     if (budgetAmountArray.length > 0) {
         budgetTotal = budgetAmountArray?.reduce((a, b) => a + b)
         categoriesList = budgetCategories
+        // create a new array that hold the total expenses for each category
+        categoriesActualSpend = categoriesList.map(category => {
+            let categoryExpenses = tracker.filter(item => item.category === category)
+            let catTotal = 0
+            if (categoryExpenses.length > 0) {
+                if (categoryExpenses.length === 1) {
+                    catTotal = categoryExpenses[0].amount
+                } else {
+                    catTotal = categoryExpenses.reduce((a, b) => Number(a.amount) + Number(b.amount))
+                }
+            }
+            let catTotalSpend = {
+                category: category,
+                amount: catTotal
+            }
+            return catTotalSpend
+        })
+        // create a new array that holds category name, plan amount and remaining amount
+        budgetTracking = budget.map(category => {
+            let currentCategory = (categoriesActualSpend.find(item => item.category === category.category))
+            let currentCategorySpend = Number(currentCategory.amount)
+            let trackedCategory = {
+                category: category.category,
+                plan: category.amount,
+                remaining: Number(category.amount) - Number(currentCategorySpend)
+            }
+            // console.log(category.amount)
+            // console.log(currentCategory)
+            // console.log(currentCategorySpend)
+            // console.log(category.amount - currentCategorySpend)
+            return trackedCategory
+        })
     }
 
     const handleSubmit = () => {
@@ -53,7 +87,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                                     <li className='labels__label'>Remaining</li>
                                 </ul>
                             </li>
-                            {budget?.map((item, index) => {
+                            {budgetTracking?.map((item, index) => {
                                 return (
                                     <li key={index} className='budget__item'>
                                         <ul className='item'>
@@ -63,15 +97,16 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                                                     displayType={'text'}
                                                     thousandSeparator={true}
                                                     prefix={'$'}
-                                                    value={item.amount}
+                                                    value={item.plan}
                                                 />
                                             </li>
                                             <li className='item__value'>
                                                 <NumberFormat
+                                                    className={item.remaining >= 0 ? '' : 'budget-category--over'}
                                                     displayType={'text'}
                                                     thousandSeparator={true}
                                                     prefix={'$'}
-                                                    value={100}
+                                                    value={item.remaining}
                                                 />
                                             </li>
                                         </ul>

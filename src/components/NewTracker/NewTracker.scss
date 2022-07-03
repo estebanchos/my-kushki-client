@@ -6,17 +6,19 @@
         @include font-family-title;
         font-size: 2rem;
     }
-    &__container {
 
-    }
+    &__container {}
+
     &__budget-tracker {
-
+        margin-bottom: 2rem;
     }
+
     &__expenses-tracker {
-
+        margin-bottom: 2rem;
     }
-    &__expenses-input {
 
+    &__expenses-input {
+        margin-bottom: 2rem;
     }
 }
 
@@ -34,6 +36,9 @@
 
     &__title {
         @include font-family-title;
+        @include tablet {
+            margin-bottom: 0.5rem;
+        }
     }
 }
 
@@ -42,13 +47,16 @@
     display: flex;
     justify-content: center;
 
+    @include tablet {
+        margin-top: 0;
+    }
+
     &__inputs {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
 
         @include tablet {
-            flex-direction: row;
             align-items: center;
         }
     }
@@ -56,6 +64,12 @@
     &__inputs-container {
         display: flex;
         flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
     }
 
     &__item {
@@ -64,6 +78,10 @@
         border-radius: 1rem;
         border: 1px solid $color-border-card;
         width: 13rem;
+        @include tablet {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     }
 
     &__amount-container {
@@ -78,7 +96,7 @@
         width: 13rem;
 
         @include tablet {
-            width: 9rem;
+            width: 13rem;
         }
 
         &::placeholder {
@@ -116,25 +134,39 @@
     &__container {
         @include card-style;
     }
+
     &__title {
         @include font-family-title;
     }
+
     &__table {
         margin: 1rem 0;
         margin-bottom: 2rem;
         list-style: none;
         padding: 0;
+
         @include tablet {
             margin: 1rem 2rem;
             margin-bottom: 2rem;
         }
     }
+
     &__labels {
         padding: 1rem 0;
         margin: 0 1rem;
         border-bottom: 1px solid $color-border-card;
+        @include tablet {
+            margin: 0.5rem 1rem;
+        }
     }
+
     &__item {
-        margin: 0.5rem;
+        margin: 0.5rem 1rem;
+    }
+}
+
+.budget-category {
+    &--over {
+        color: $color-error-message;
     }
 }
