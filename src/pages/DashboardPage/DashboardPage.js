@@ -6,8 +6,9 @@ import MenuOption from '../../components/MenuOption/MenuOption';
 import NewBudget from '../../components/NewBudget/NewBudget';
 import Budget from '../../components/Budget/Budget';
 import NewTracker from '../../components/NewTracker/NewTracker';
+import Login from '../../components/LogIn/Login';
 
-function DashboardPage({ isAuth }) {
+function DashboardPage({ isAuth, userLoggedIn }) {
 
     const [budget, setBudget] = useState([])
     const [tracker, setTracker] = useState([])
@@ -52,7 +53,15 @@ function DashboardPage({ isAuth }) {
     }, [])
 
     if (!isAuth) {
-        return <div>Sign in please</div>
+        return (
+            <div className='main-unauth-dp'>
+                <div className='main-unauth-dp__container'>
+                    <h1 className='main-unauth-dp__title'>Welcome Back</h1>
+                    <span className='main-unauth-dp__copy'>Please sign in to access your Dashboard</span>
+                </div>
+                <Login userLoggedIn={userLoggedIn} />
+            </div>
+        )
     }
 
     return (
@@ -85,11 +94,11 @@ function DashboardPage({ isAuth }) {
                 <Budget budget={budget} />
             </div>
             <div className={newTrackerModal ? '' : 'show-new-tracker--hidden'}>
-                <NewTracker 
-                budget={budget} 
-                tracker={tracker}
-                setTracker={setTracker}
-                authHeader={authHeader} />
+                <NewTracker
+                    budget={budget}
+                    tracker={tracker}
+                    setTracker={setTracker}
+                    authHeader={authHeader} />
             </div>
         </main>
     );

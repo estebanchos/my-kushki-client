@@ -38,7 +38,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
             }
             return catTotalSpend
         })
-        
+
         // create a new array that holds category name, plan amount and remaining amount
         budgetTracking = budget.map(category => {
             let currentCategory = (categoriesActualSpend.find(item => item.category === category.category))
@@ -57,10 +57,10 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
             const newExpenseItem = {
                 item: expenseItem,
                 category: selectedCategory,
-                amount: expenseAmount
+                amount: Number(expenseAmount)
             }
             axios.post(apiUrl + '/users/newExpense', newExpenseItem, { headers: authHeader })
-                .then(res => {
+                .then(_res => {
                     setTracker([...tracker, newExpenseItem])
                     setSelectedCategory('')
                     setExpenseAmount(0)
@@ -72,7 +72,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
 
     return (
         <section className='new-tracker'>
-            <h1 className='new-tracker__title'>Track your monthly expenses</h1>
+            <h2 className='new-tracker__title'>Track your monthly expenses</h2>
             <div className='new-tracker__container'>
                 <section className='new-tracker__budget-tracker'>
                     <article className='expenses-budget__container'>
@@ -136,38 +136,6 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                     </article>
                 </section>
                 <div className='new-tracker__expenses-container'>
-                    <section className='new-tracker__expenses-tracker'>
-                        <article className='expenses__container'>
-                            <h2 className='expenses__title'>Your Expenses</h2>
-                            <ul className='expenses__table'>
-                                <li className='expenses__labels'>
-                                    <ul className='labels'>
-                                        <li className='labels__label'>Category</li>
-                                        <li className='labels__label'>Item</li>
-                                        <li className='labels__label'>Amount</li>
-                                    </ul>
-                                </li>
-                                {tracker?.map((item, index) => {
-                                    return (
-                                        <li key={index} className='expenses__item'>
-                                            <ul className='item'>
-                                                <li className='item__value'>{item.category}</li>
-                                                <li className='item__value'>{item.item}</li>
-                                                <li className='item__value'>
-                                                    <NumberFormat
-                                                        displayType={'text'}
-                                                        thousandSeparator={true}
-                                                        prefix={'$'}
-                                                        value={item.amount}
-                                                    />
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </article>
-                    </section>
                     <section className='new-tracker__expenses-input'>
                         <div className='new-expense'>
                             <h2 className='new-expense__title'>New Expense</h2>
@@ -211,6 +179,38 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                                 </div>
                             </div>
                         </div>
+                    </section>
+                    <section className='new-tracker__expenses-tracker'>
+                        <article className='expenses__container'>
+                            <h2 className='expenses__title'>Your Expenses</h2>
+                            <ul className='expenses__table'>
+                                <li className='expenses__labels'>
+                                    <ul className='labels'>
+                                        <li className='labels__label'>Category</li>
+                                        <li className='labels__label'>Item</li>
+                                        <li className='labels__label'>Amount</li>
+                                    </ul>
+                                </li>
+                                {tracker?.map((item, index) => {
+                                    return (
+                                        <li key={index} className='expenses__item'>
+                                            <ul className='item'>
+                                                <li className='item__value'>{item.category}</li>
+                                                <li className='item__value'>{item.item}</li>
+                                                <li className='item__value'>
+                                                    <NumberFormat
+                                                        displayType={'text'}
+                                                        thousandSeparator={true}
+                                                        prefix={'$'}
+                                                        value={item.amount}
+                                                    />
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </article>
                     </section>
                 </div>
             </div>

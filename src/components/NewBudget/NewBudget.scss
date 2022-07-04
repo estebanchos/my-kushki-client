@@ -2,8 +2,7 @@
 @use '../../styles/partials/colors' as *;
 
 .new-budget {
-    @include card-style;
-    background-color: $color-background-secondary;
+    
 
     @include tablet {
         margin: 0 1rem;
@@ -12,12 +11,15 @@
     @include desktop {
         margin: 0 3rem;
     }
+
     &--hidden {
         display: none;
     }
 
     &__title {
         @include font-family-title;
+        margin: 1rem 0;
+        // color: $color-font-primary;
     }
 
     &__list {
@@ -33,6 +35,17 @@
     &__list-item {
         padding-left: 0.25rem;
         padding-right: 1rem;
+    }
+
+    &__container {
+        @include card-style;
+        background-color: $color-background-secondary;
+    }
+
+    &__header {
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        font-weight: 600;
     }
 }
 
@@ -83,8 +96,9 @@
         height: fit-content;
         width: fit-content;
         margin: 0.5rem;
+        margin-bottom: 0;
         padding: 0.25rem 0.4rem;
-        background-color: $color-font-primary;
+        background-color: $color-button-login;
         color: $color-font-secondary;
         border-radius: 1rem;
         border: 1px solid $color-border-card;

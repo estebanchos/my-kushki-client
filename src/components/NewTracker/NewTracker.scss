@@ -4,6 +4,9 @@
 .new-tracker {
     &__title {
         @include font-family-title;
+        font-size: 1.5rem;
+        margin: 2rem 0;
+        margin-bottom: 1rem;
     }
 
     &__container {
@@ -53,6 +56,7 @@
 
     &__title {
         @include font-family-title;
+        margin-top: 1rem;
 
         @include tablet {
             margin-bottom: 0.5rem;
@@ -138,8 +142,9 @@
         height: fit-content;
         width: fit-content;
         margin: 0.5rem;
+        margin-bottom: 0;
         padding: 0.25rem 0.4rem;
-        background-color: $color-font-primary;
+        background-color: $color-button-login;
         color: $color-font-secondary;
         border-radius: 1rem;
         border: 1px solid $color-border-card;
@@ -164,17 +169,19 @@
 
     &__title {
         @include font-family-title;
-
+        margin-top: 1rem;
+        margin-bottom: 0;
         @include desktop {
             margin-bottom: 0.5rem;
         }
     }
 
     &__table {
-        margin: 1rem 0;
-        margin-bottom: 2rem;
         list-style: none;
         padding: 0;
+        margin: 0.5rem;
+        margin-top: 0;
+        margin-bottom: 2rem;
 
         @include tablet {
             margin: 1rem 2rem;
@@ -214,10 +221,13 @@
 
     &__title {
         @include font-family-title;
+        margin-top: 1rem;
+        margin-bottom: 0;
     }
 
     &__table {
-        margin: 1rem;
+        margin: 0.5rem;
+        margin-top: 0;
         list-style: none;
         padding: 0;
     }

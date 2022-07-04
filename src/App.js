@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const token = sessionStorage.getItem('token')
     if (!token) userLoggedOut()
-    if (!!token) userLoggedIn() 
+    if (!!token) userLoggedIn()
   }, [])
 
   return (
@@ -32,8 +32,8 @@ function App() {
           <Route path='/register' component={NewUser} />
           <Route path='/login' render={(props) => <Login userLoggedIn={userLoggedIn} {...props} />} />
           <Route exact path='/learn' component={LearnPage} />
-          <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
-          <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} {...props} />} />
+          <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />} />
+          <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} userLoggedIn={userLoggedIn} {...props} />} />
           <Route path='/learn/placeholder' component={PlaceholderPage} />
         </Switch>
         <Footer />

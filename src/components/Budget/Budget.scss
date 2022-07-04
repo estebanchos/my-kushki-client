@@ -13,9 +13,12 @@ ul.budget__table, ul.labels, ul.item, ul.total {
     }
     &__title {
         @include font-family-title;
+        margin-top: 1rem;
+        margin-bottom: 0;
     }
     &__table {
-        margin: 1rem;
+        margin: 0.5rem;
+        margin-top: 0;
     }
     &__labels {
         padding: 1rem 0;

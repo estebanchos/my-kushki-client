@@ -22,7 +22,10 @@
         @include font-family-body;
         margin: 0.5rem 2rem;
         margin-bottom: 1rem;
-        font-size: 1.25rem;
+        font-size: 1rem;
+        @include tablet {
+            font-size: 1.25rem;
+        }
     }
 
     &__container {
@@ -42,6 +45,7 @@
         border: 1px solid $color-border-card;
         font-weight: 600;
         font-size: 1rem;
+
         @include tablet {
             font-size: 1.25rem;
         }
@@ -53,7 +57,11 @@
         margin: 0 auto;
         margin-top: 0;
         background-color: $color-card-one;
-        font-size: 1.25rem;
+        font-size: 1rem;
+
+        @include tablet {
+            font-size: 1.25rem;
+        }
     }
 }
 
@@ -63,7 +71,10 @@
 
     &__copy {
         margin: 0;
-        font-size: 1.25rem;
+        font-size: 1rem;
+        @include tablet {
+            font-size: 1.25rem;
+        }
     }
 
     &__link {
@@ -71,6 +82,9 @@
         color: $color-font-primary;
         font-weight: 600;
         text-decoration: underline;
-        font-size: 1.25rem;
+        font-size: 1rem;
+        @include tablet {
+            font-size: 1.25rem;
+        }
     }
 }

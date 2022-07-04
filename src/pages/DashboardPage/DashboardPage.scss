@@ -24,8 +24,37 @@
     }
 }
 
-.show-budget {
+.show-new-budget {
     &--hidden {
         display: none;
+    }
+}
+
+
+.main-unauth-dp {
+    margin: 0;
+    @include font-family-body;
+
+    @include tablet {
+        margin: 1.5rem 2.5rem;
+    }
+
+    @include desktop {
+        @include desktop-fixed-size;
+    }
+
+    &__container {
+        margin: 0 2rem;
+    }
+
+    &__title {
+        @include font-family-title;
+        font-size: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    &__copy {
+        font-size: 1.25rem;
     }
 }

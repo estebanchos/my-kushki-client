@@ -37,42 +37,46 @@ function NewBudget({ budget, setBudget, authHeader }) {
 
     return (
         <section className='new-budget'>
-            <h2 className='new-budget__title'>Create your Budget</h2>
+            <h2 className='new-budget__title'>Create your budget</h2>
+
             <ul className='new-budget__list'>
                 <li className='new-budget__list-item'>Look at your expenses</li>
                 <li className='new-budget__list-item'>Estimate future expenses</li>
                 <li className='new-budget__list-item'>Learn more about creating your budget on "some link"</li>
             </ul>
-            <div className='budget-inputs'>
-                <div className='budget-inputs__inputs'>
-                    <div className='budget-inputs__inputs-container'>
-                        <DropdownMenu
-                            options={categoriesList}
-                            value={selectedCategory}
-                            onChange={setSelectedCategory}
-                        />
-                        <div className='budget-inputs__amount-container'>
-                            <NumberFormat
-                                className='budget-inputs__amount'
-                                placeholder='Amount...'
-                                displayType={'input'}
-                                prefix={'$'}
-                                thousandSeparator={true}
-                                value={categoryAmount}
-                                onValueChange={(values) => {
-                                    const { formattedValue, value } = values
-                                    setCategoryAmount(value)
-                                }}
+            <div className='new-budget__container'>
+                <h3 className='new-budget__header'>New Budget</h3>
+                <div className='budget-inputs'>
+                    <div className='budget-inputs__inputs'>
+                        <div className='budget-inputs__inputs-container'>
+                            <DropdownMenu
+                                options={categoriesList}
+                                value={selectedCategory}
+                                onChange={setSelectedCategory}
                             />
-                            <InvalidInput isValid={isValidAmount} message='Please enter a valid number' />
+                            <div className='budget-inputs__amount-container'>
+                                <NumberFormat
+                                    className='budget-inputs__amount'
+                                    placeholder='Amount...'
+                                    displayType={'input'}
+                                    prefix={'$'}
+                                    thousandSeparator={true}
+                                    value={categoryAmount}
+                                    onValueChange={(values) => {
+                                        const { formattedValue, value } = values
+                                        setCategoryAmount(value)
+                                    }}
+                                />
+                                <InvalidInput isValid={isValidAmount} message='Please enter a valid number' />
+                            </div>
+                        </div>
+                        <div className='budget-inputs__action-container' onClick={handleSubmit}>
+                            <img className='budget-inputs__icon' src={addIcon} alt='add item icon' />
+                            <span className='budget-inputs__cta'>Add</span>
                         </div>
                     </div>
-                    <div className='budget-inputs__action-container' onClick={handleSubmit}>
-                        <img className='budget-inputs__icon' src={addIcon} alt='add item icon' />
-                        <span className='budget-inputs__cta'>Add</span>
-                    </div>
-                </div>
 
+                </div>
             </div>
         </section>
     );
