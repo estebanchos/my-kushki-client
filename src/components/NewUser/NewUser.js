@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import InvalidInput from '../InvalidInput/InvalidInput';
 import hideIcon from '../../assets/icons/hide.svg'
 import showIcon from '../../assets/icons/show.svg'
+import { Alert, Button, Space } from 'antd';
 
 function NewUser(props) {
     const [name, setName] = useState('')
@@ -30,7 +31,6 @@ function NewUser(props) {
                     setEmail('')
                     setPassword('')
                     setRegistered(res.data.successSignUp)
-                    setTimeout(() => redirectToLogin(), 2000)
                 })
                 .catch(err => console.error(err))
         }
@@ -113,7 +113,21 @@ function NewUser(props) {
                     />
                 </div>
                 <InvalidInput isValid={isValidPassword} message='Password must have at least 5 characters' />
-                <p className={`success-message${isRegistered ? '--active' : '--hidden'}`}>Successful Sign Up! Redirecting to login!</p>
+                <div className={`alert-message${isRegistered ? '--active' : '--hidden'}`}>
+                    <Alert
+                        message="Successful sign up"
+                        type="success"
+                        showIcon
+                        action={
+                            <Space>
+                                <Button size="small" type="ghost" onClick={redirectToLogin}>
+                                    Sign in
+                                </Button>
+                            </Space>
+                        }
+                        closable
+                    />
+                </div>
                 <button
                     className='register__button'
                     onClick={handleSubmit}>

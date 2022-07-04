@@ -91,15 +91,14 @@
     }
 }
 
-.success-message {
+.alert-message {
     &--hidden {
         display: none;
     }
 
     &--active {
-        margin: 0.5rem 3rem 0 3rem;
-        color: $color-font-titles;
-        font-weight: 600;
+        margin: 0.75rem;
+        margin-bottom: 1rem;
     }
 }
 
