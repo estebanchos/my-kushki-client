@@ -25,6 +25,9 @@
 
         &__link {
             color: $color-font-secondary;
+            @include tablet {
+                font-size: 1rem;
+            }
         }
     }
 }

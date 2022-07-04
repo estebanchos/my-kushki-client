@@ -11,6 +11,9 @@ function ModalNav({ isShowingNav, showNavModal }) {
     return (
         <nav className={isShowingNav ? 'modal' : 'modal--hidden'}>
             <ul className='modal-nav'>
+                <li className='modal-nav__item'>
+                    <Link className='modal-nav__link' to='/' onClick={showNavModal}>Home</Link>
+                </li>
                 <li className='modal-nav__parent-item'>
                     <div className='modal-nav__parent-container'>
                         <Link className='modal-nav__link' to='/learn' onClick={showNavModal}>Learn</Link>
@@ -23,18 +26,18 @@ function ModalNav({ isShowingNav, showNavModal }) {
                     </div>
                     <ul className={`children${isShowingLearn ? '' : '--hidden'}`}>
                         <li className='children__item'>
-                            <Link className='modal-nav__link' to='/learn/basics' onClick={showNavModal}>The Basics</Link>
+                            <Link className='modal-nav__link' to='/learn/placeholder' onClick={showNavModal}>The Basics</Link>
                         </li>
                         <li className='children__item'>
-                            <Link className='modal-nav__link' to='/learn/intermediate' onClick={showNavModal}>Intermediate</Link>
+                            <Link className='modal-nav__link' to='/learn/placeholder' onClick={showNavModal}>Intermediate</Link>
                         </li>
                         <li className='children__item'>
-                            <Link className='modal-nav__link' to='/learn/advanced' onClick={showNavModal}>Advanced</Link>
+                            <Link className='modal-nav__link' to='/learn/placeholder' onClick={showNavModal}>Advanced</Link>
                         </li>
                     </ul>
                 </li>
                 <li className='modal-nav__item'>
-                    <Link className='modal-nav__link' to='/dashboard' onClick={showNavModal}>Do</Link>
+                    <Link className='modal-nav__link' to='/dashboard' onClick={showNavModal}>Dashboard</Link>
                 </li>
                 <li className='modal-nav__item'>
                     <Link className='modal-nav__link' to='/contactus' onClick={showNavModal}>Contact Us</Link>

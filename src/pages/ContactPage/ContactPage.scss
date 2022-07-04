@@ -1,2 +1,90 @@
 @use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
 
+.contactus {
+    margin: 1rem 3rem;
+    @include font-family-body;
+
+    @include tablet {
+        margin: 1rem 4rem;
+    }
+
+    @include desktop {
+        @include desktop-fixed-size
+    }
+
+    &__title {
+        @include font-family-title;
+
+    }
+
+    &__intro {
+        font-size: 1.3125rem;
+    }
+
+    &__actions-container {
+        margin: 3rem 0;
+
+        @include tablet {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 2rem 0;
+        }
+    }
+
+    &__action {
+        margin: 2rem 0;
+
+        @include tablet {
+            width: 40%;
+            margin: 0 2rem;
+        }
+    }
+
+    &__email-text {
+        margin: 2rem 0;
+        font-size: 1.3125rem;
+
+        @include tablet {
+            margin: 0;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__chat-text {
+        margin: 2rem 0;
+        margin-top: 3rem;
+        font-size: 1.3125rem;
+
+        @include tablet {
+            margin: 0;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__link {
+        color: $color-font-secondary;
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+        background-color: $color-background-dark;
+        border-radius: 3rem;
+        font-weight: 600;
+    }
+
+    &__button {
+        @include button-style;
+        background-color: $color-background-dark;
+        font-size: 1.25rem;
+        display: inline;
+        font-weight: 600;
+    }
+    &__disabled-button {
+        @include button-style;
+        background-color: $color-background-light;
+        color: $color-font-alt;
+        font-size: 1.25rem;
+        display: inline;
+        font-weight: 600;
+    }
+}

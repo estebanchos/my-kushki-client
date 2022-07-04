@@ -5,7 +5,7 @@ import showIcon from '../../assets/icons/show.svg';
 import InvalidInput from '../InvalidInput/InvalidInput';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api'
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Login({ userLoggedIn }) {
     
@@ -77,6 +77,10 @@ function Login({ userLoggedIn }) {
                     onClick={handleSubmit}>
                     Log in
                 </button>
+            </div>
+            <div className='register-redirect'>
+                <p className='register-redirect__copy'>Don't yet have an account?</p>
+                <Link className='register-redirect__link' to='/register'>Sign Up</Link>
             </div>
         </main>
     );

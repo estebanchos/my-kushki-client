@@ -12,6 +12,7 @@
     @include tablet {
         margin: 0.5rem 1.5rem;
     }
+
     @include desktop {
         @include desktop-fixed-size;
     }
@@ -29,6 +30,10 @@
 
     &__logo {
         @include font-family-logo;
+
+        @include tablet {
+            font-size: 2rem;
+        }
     }
 
     &__logo-link {
@@ -47,7 +52,11 @@
         margin-right: 1rem;
         font-size: 1rem;
 
-        &--hide{
+        @include tablet {
+            font-size: 1.25rem;
+        }
+
+        &--hide {
             display: none;
         }
     }
@@ -61,6 +70,5 @@ button.header__auth {
     @include tablet {
         display: none;
     }
-    
-}
 
+}

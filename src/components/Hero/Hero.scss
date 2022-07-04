@@ -21,6 +21,7 @@
         margin: 0 2rem;
         margin-bottom: 1rem;
         font-size: 3rem;
+        color: $color-font-secondary;
     }
 
     &__copy {
@@ -40,8 +41,4 @@
         background-color: $color-background-dark;
         border-radius: 3rem;
     }
-}
-
-.slick-dots {
-    display: none;
 }

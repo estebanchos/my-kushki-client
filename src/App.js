@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Login from './components/LogIn/Login';
 import LearnPage from './pages/LearnPage/LearnPage';
 import Footer from './components/Footer/Footer';
+import PlaceholderPage from './pages/PlaceholderPage/PlaceholderPage';
 
 function App() {
 
@@ -30,9 +31,10 @@ function App() {
           <Route exact path='/' component={HomePage} />
           <Route path='/register' component={NewUser} />
           <Route path='/login' render={(props) => <Login userLoggedIn={userLoggedIn} {...props} />} />
-          <Route path='/learn' component={LearnPage} />
+          <Route exact path='/learn' component={LearnPage} />
           <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />}/>
           <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} {...props} />} />
+          <Route path='/learn/placeholder' component={PlaceholderPage} />
         </Switch>
         <Footer />
       </BrowserRouter>

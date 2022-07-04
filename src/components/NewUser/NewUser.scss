@@ -14,18 +14,24 @@
 
     &__title {
         @include font-family-title;
-        margin-bottom: 0.75rem;
+        margin: 1rem 0;
+        font-size: 2rem;
     }
 
     &__copy {
         @include font-family-body;
         margin: 0.5rem 2rem;
         margin-bottom: 1rem;
+        font-size: 1.25rem;
     }
 
     &__container {
         display: flex;
         flex-direction: column;
+        @include tablet {
+            max-width: 35rem;
+            margin: 0 auto;
+        }
     }
 
     &__input {
@@ -34,21 +40,28 @@
         border-radius: 1rem;
         border: 1px solid $color-border-card;
         font-weight: 600;
+        font-size: 1rem;
+        @include tablet {
+            font-size: 1.25rem;
+        }
     }
 
     &__button {
         @include button-style;
         width: fit-content;
-        margin: 2rem auto;
+        margin: 0 auto;
         background-color: $color-card-one;
+        font-size: 1.25rem;
     }
 }
 
 .login-redirect {
+    margin-top: 1rem;
     margin-bottom: 2rem;
 
     &__copy {
         margin: 0;
+        font-size: 1.25rem;
     }
 
     &__link {
@@ -56,6 +69,7 @@
         color: $color-font-primary;
         font-weight: 600;
         text-decoration: underline;
+        font-size: 1.25rem;
     }
 }
 

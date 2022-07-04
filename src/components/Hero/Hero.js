@@ -1,16 +1,7 @@
-import { Carousel } from 'antd';
 import { Link } from 'react-router-dom';
 import './Hero.scss'
 
 function Hero() {
-
-    const contentStyle = {
-        height: '160px',
-        color: '#fff',
-        lineHeight: '160px',
-        textAlign: 'center',
-        background: '#364d79',
-    }
 
     return (
         <div className='hero'>
