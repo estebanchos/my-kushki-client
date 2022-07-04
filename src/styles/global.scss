@@ -3,29 +3,41 @@
 @use './partials/mixins' as *;
 
 html {
-    font-size: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    overflow-x: hidden;
-  }
-  
-  * {
-    box-sizing: inherit;
-  }
-  
-  body {
-    margin: 0;
-    background-color: $color-background-white;
-    position: relative;
-    overflow-x: hidden;
-    height: 100vh;
-  }
+  font-size: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  overflow-x: hidden;
+}
 
-  a {
-    text-decoration: none;
-    cursor: pointer;
-  }
+* {
+  box-sizing: inherit;
+}
 
-  button {
-    cursor: pointer;
+body {
+  margin: 0;
+  background-color: $color-background-white;
+  position: relative;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.7s;
+
+  &:hover {
+    color: $color-font-primary;
+    transition: color 0.7s;
   }
+}
+
+button {
+  cursor: pointer;
+  transition: color 0.7s;
+
+  &:hover {
+    color: $color-font-primary;
+    transition: color 0.7s;
+  }
+}

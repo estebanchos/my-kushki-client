@@ -16,19 +16,16 @@
     margin-top: 3rem;
 
     &__gallery{
-        @include tablet {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        // ### TODO : fix carousel for non-mobile screens
+        // @include tablet {
+        //     display: flex;
+        //     flex-wrap: wrap;
+        //     justify-content: center;
+        // }
     }
 
     &__container {
-        
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 1rem;
+        margin: 0 auto;
     }
 
     &__title {
@@ -40,9 +37,20 @@
     &__question {
         margin: 0;
         margin-top: 0.2rem;
+        font-size: 1rem;
+        @include tablet {
+            font-size: 1.5rem;
+        }
     }
 
     &__image {
         width: 20rem;
+        margin: 0.2rem auto;
+        @include tablet {
+            width: 40rem;
+        }
+        @include desktop {
+            width: 50rem;
+        }
     }
 }

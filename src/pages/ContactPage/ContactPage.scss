@@ -70,6 +70,11 @@
         background-color: $color-background-dark;
         border-radius: 3rem;
         font-weight: 600;
+        transition: color 0.7s;
+        &:hover {
+            color: $color-font-primary;
+            transition: color 0.7s;
+        }
     }
 
     &__button {
@@ -78,6 +83,11 @@
         font-size: 1.25rem;
         display: inline;
         font-weight: 600;
+        transition: color 0.7s;
+        &:hover {
+            color: $color-font-primary;
+            transition: color 0.7s;
+        }
     }
     &__disabled-button {
         @include button-style;
