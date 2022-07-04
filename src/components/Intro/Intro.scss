@@ -4,12 +4,23 @@
 .intro {
     display: flex;
     flex-direction: column;
-    margin: 1rem 2rem;
+    margin: 1rem 3rem;
+    align-items: center;
     @include tablet {
-        margin: 1.5rem 2.5rem;
+        margin: 2rem 3rem;
     }
     @include desktop {
         @include desktop-fixed-size;
+    }
+
+    &__image {
+        width: 16rem;
+        @include tablet {
+            width: 18rem;
+        }
+        @include desktop {
+            width: 20rem;
+        }
     }
 
     &__title {
@@ -23,7 +34,7 @@
     }
 
     &__copy {
-        margin: 0;
+        margin: 0 1rem;
         margin-top: 1rem;
         @include font-family-body;
         font-size: 1.3125rem;

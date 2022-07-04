@@ -10,7 +10,7 @@ function Footer() {
             <section class="contact">
                 <h2 class="contact__title">Let's get in touch!</h2>
                 <article class="contact__contacts-container">
-                    <a class="contact__link" href="mailto:estebanchos@outlook.com"><img class="contact__icon"
+                    <a class="contact__link" href="mailto:charlie@carlosocampo.ca"><img class="contact__icon"
                         src={mailIcon} alt="email envelope" /></a>
                     <a class="contact__link" href="https://www.linkedin.com/in/carlosocampo/"><img class="contact__icon"
                         src={linkedinIcon} alt="linkedin icon" /></a>

@@ -21,7 +21,7 @@
     }
 
     &__intro-container {
-        margin: 0 1rem;
+        margin: 0;
     }
 
     &__learning-paths {
@@ -30,6 +30,7 @@
 
     &__path {
         margin: 1rem 0;
+        margin-bottom: 2rem;
     }
 }
 
@@ -49,6 +50,10 @@
             overflow-x: visible;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
         }
     }
 }

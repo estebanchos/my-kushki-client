@@ -4,12 +4,11 @@
 .action-article {
     @include font-family-body;
     width: 90%;
-    margin: 1.5rem auto 3rem auto;
+    margin: 2rem auto 4.5rem auto;
 
     &__title {
-        font-size: 1.35rem;
+        font-size: 1.6rem;
         font-weight: 600;
-        color: $color-font-titles;
         margin: 1rem;
     }
 
