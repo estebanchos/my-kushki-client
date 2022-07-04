@@ -14,8 +14,6 @@ function NewBudget({ budget, setBudget, authHeader }) {
     let categoriesList = budgetCategories
     const [selectedCategory, setSelectedCategory] = useState('')
     const [categoryAmount, setCategoryAmount] = useState(null)
-    // const [budget, setBudget] = useState([])
-    const [isValidAmount, setValidAmount] = useState(true)
 
     const handleSubmit = () => {
         if (selectedCategory && categoryAmount) {
@@ -67,7 +65,6 @@ function NewBudget({ budget, setBudget, authHeader }) {
                                         setCategoryAmount(value)
                                     }}
                                 />
-                                <InvalidInput isValid={isValidAmount} message='Please enter a valid number' />
                             </div>
                         </div>
                         <div className='budget-inputs__action-container' onClick={handleSubmit}>

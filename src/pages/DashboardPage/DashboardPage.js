@@ -7,50 +7,81 @@ import NewBudget from '../../components/NewBudget/NewBudget';
 import Budget from '../../components/Budget/Budget';
 import NewTracker from '../../components/NewTracker/NewTracker';
 import Login from '../../components/LogIn/Login';
+import { Steps } from 'antd';
+
+const { Step } = Steps
 
 function DashboardPage({ isAuth, userLoggedIn }) {
 
     const [budget, setBudget] = useState([])
     const [tracker, setTracker] = useState([])
-    const [newBudgetModal, setNewBudgetModal] = useState(false)
-    const [showExistingBudget, setShowExistingBudget] = useState(false)
-    const [newTrackerModal, setNewTrackerModal] = useState(false)
-    const [showExistingTracker, setShowExistingTracker] = useState(false)
-    // const [newTrackerModal, setNewTrackerModal] = useState(false)
+    const [budgetExists, setBudgetExists] = useState(false)
+    const [trackerExists, setTrackerExists] = useState(false)
+    const [progress, setProgress] = useState(0)
+    const [showBudgetMenu, setShowBudgetMenu] = useState(true)
+    const [showTrackerMenu, setShowTrackerMenu] = useState(false)
+    const [showNewBudgetModal, setShowNewBudgetModal] = useState(false)
+    const [showNewTrackerModal, setShowNewTrackerModal] = useState(false)
+    // const [showExistingBudget, setShowExistingBudget] = useState(false)
+    // const [showExistingTracker, setShowExistingTracker] = useState(false)
 
     const token = sessionStorage.getItem('token')
     const authHeader = { Authorization: 'Bearer ' + token }
 
-    function budgetExists() {
+    function validBudgetExists() {
         if (budget.length < 1) {
             return false
         }
         return true
     }
 
-    function trackerExists() {
+    function validTrackerExists() {
         if (tracker.length < 1) {
             return false
         }
         return true
     }
 
-    const startNewBudget = () => setNewBudgetModal(true)
-    const openExistingBudget = () => setShowExistingBudget(true)
+    const startNewBudget = () => { 
+        setShowNewBudgetModal(true) 
+        setShowBudgetMenu(false)
+        setShowTrackerMenu(true)
+    }
+
+    const startNewTracker = () => {
+        setShowTrackerMenu(false)
+        setShowNewBudgetModal(false)
+        setShowNewTrackerModal(true)
+        setProgress(1)
+    }
 
     useEffect(() => {
         if (isAuth) {
             axios.get(apiUrl + '/users/budget', { headers: authHeader })
                 .then(res => {
                     setBudget(res.data)
+                    if (validBudgetExists()) setBudgetExists(true)
                     axios.get(apiUrl + '/users/expenses', { headers: authHeader })
                         .then(res => {
                             setTracker(res.data)
+                            if (validTrackerExists()) setTrackerExists(true)
                         })
                 })
                 .catch(err => console.error(err))
         }
     }, [])
+
+    useEffect(() => {
+        if (validBudgetExists() && !validTrackerExists()) {
+            setShowNewBudgetModal(true)
+            setShowBudgetMenu(false)
+            setShowTrackerMenu(true)
+        }
+        if (validBudgetExists() && validTrackerExists()) {
+            setProgress(1)
+            setShowNewTrackerModal(true)
+        }
+    }, [budget, tracker])
 
     if (!isAuth) {
         return (
@@ -67,33 +98,40 @@ function DashboardPage({ isAuth, userLoggedIn }) {
     return (
         <main className='main-dp'>
             <h1 className='main-dp__title'>Welcome to your Dashboard</h1>
-            <section className='main-dp__menu'>
+            <div className='main-dp__progress'>
+                <Steps size="small" current={progress}>
+                    <Step title="Create Budget" />
+                    <Step title="Track Expenses" />
+                    <Step title="Get In Control" />
+                </Steps>
+            </div>
+            <div className={showBudgetMenu ? `main-dp__menu-budget` : `main-dp__menu-hidden`}>
                 <MenuOption
                     title='Budget'
                     copy='Plan your monthly expenses'
-                    enableOpen={budgetExists()}
-                    enableNew={true}
+                    cta='Create Budget'
                     startNew={startNewBudget}
-                    openExisting={openExistingBudget}
                 />
-                <MenuOption
-                    title='Tracker'
-                    copy={`Get control of your monthly expenses${!budgetExists() ? '. Create a budget first, then you can start tracking your expenses' : ''}`}
-                    enableOpen={trackerExists()}
-                    enableNew={budgetExists()}
-                />
-            </section>
-            <div className={newBudgetModal ? '' : 'show-new-budget--hidden'}>
+            </div>
+            <div className={showNewBudgetModal ? '' : 'show-new-budget--hidden'}>
                 <NewBudget
                     budget={budget}
                     setBudget={setBudget}
                     authHeader={authHeader}
                 />
             </div>
-            <div className={newBudgetModal || showExistingBudget ? '' : 'show-budget--hidden'}>
+            <div className={progress === 0 ? '' : 'show-tracked-budget--hidden'}>
                 <Budget budget={budget} />
             </div>
-            <div className={newTrackerModal ? '' : 'show-new-tracker--hidden'}>
+            <div className={showTrackerMenu ? `main-dp__menu-budget` : `main-dp__menu-hidden`}>
+                <MenuOption
+                    title='Expenses'
+                    copy={`Done with the budget? Start tracking your monthly expenses`}
+                    cta='Start Tracking'
+                    startNew={startNewTracker}
+                />
+            </div>
+            <div className={showNewTrackerModal ? '' : 'show-new-tracker--hidden'}>
                 <NewTracker
                     budget={budget}
                     tracker={tracker}

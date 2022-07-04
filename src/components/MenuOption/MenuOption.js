@@ -1,6 +1,6 @@
 import './MenuOption.scss';
 
-function MenuOption({ title, copy, enableOpen, enableNew, startNew, openExisting }) {
+function MenuOption({ title, copy, startNew, cta }) {
 
     return (
         <article className='menu-option'>
@@ -9,13 +9,9 @@ function MenuOption({ title, copy, enableOpen, enableNew, startNew, openExisting
                 <p className='menu-option__copy'>{copy}</p>
                 <div className='menu-option__actions'>
                     <button
-                        className={`menu-option__button-open ${enableOpen ? '' : 'button-disabled'}`}
-                        onClick={openExisting}
-                    >Open</button>
-                    <button
-                        className={`menu-option__button-new  ${enableNew ? '' : 'button-disabled'}`}
+                        className={`menu-option__button-new`}
                         onClick={startNew}
-                    >Start New</button>
+                    >{cta}</button>
                 </div>
             </div>
         </article>

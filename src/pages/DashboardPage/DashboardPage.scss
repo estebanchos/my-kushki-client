@@ -16,6 +16,9 @@
     &__title {
         @include font-family-title
     }
+    &__menu-hidden {
+        display: none;
+    }
 }
 
 .show-new-budget {
@@ -24,7 +27,13 @@
     }
 }
 
-.show-new-budget {
+.show-tracked-budget {
+    &--hidden {
+        display: none;
+    }
+}
+
+.show-new-tracker {
     &--hidden {
         display: none;
     }

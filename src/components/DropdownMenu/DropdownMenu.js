@@ -13,7 +13,7 @@ function DropdownMenu( {options, value, onChange, expenseClassName} ) {
                 <option value='' disabled hidden>Select Category</option>
                 {options.map((category, index) => {
                     return (
-                        <option key={index} value={category}>{category}</option>
+                        <option className='dropdown-container__option' key={index} value={category}>{category}</option>
                     )
                 })}
             </select>
