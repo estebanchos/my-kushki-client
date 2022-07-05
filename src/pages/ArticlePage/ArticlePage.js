@@ -1,4 +1,5 @@
-import './ArticlePage.scss'
+import './ArticlePage.scss';
+import { articlesContentInfo } from '../../assets/staticdata/articlesContent';
 
 function ArticlePage(props) {
     const id = props.match.params.articleId
