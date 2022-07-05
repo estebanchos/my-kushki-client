@@ -18,9 +18,7 @@ function Header({ isAuth, userLoggedOut }) {
         <div className='container'>
             <header className='header'>
                 <div className='header__top'>
-                    <Link to='/' className='header__logo-link'>
-                        <span className='header__logo'>my Kushki</span>
-                    </Link>
+                    <span className='header__logo'>my Kushki</span>
                     <div className='header__top-right'>
                         <Link
                             to='/login'

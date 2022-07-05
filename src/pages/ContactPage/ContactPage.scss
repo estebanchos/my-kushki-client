@@ -29,7 +29,8 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            margin: 2rem 0;
+            margin: 3rem 0;
+            margin-bottom: 4rem;
         }
     }
 
@@ -49,6 +50,7 @@
         @include tablet {
             margin: 0;
             margin-bottom: 2rem;
+            font-size: 1.25rem;
         }
     }
 
@@ -60,6 +62,7 @@
         @include tablet {
             margin: 0;
             margin-bottom: 2rem;
+            font-size: 1.25rem;
         }
     }
 
