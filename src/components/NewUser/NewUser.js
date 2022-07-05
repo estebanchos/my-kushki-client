@@ -89,6 +89,7 @@ function NewUser(props) {
                     placeholder='Email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    autoCapitalize='none'
                 />
                 <InvalidInput isValid={isValidEmail} message='Please enter a valid email' />
                 <input

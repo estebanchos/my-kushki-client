@@ -49,6 +49,7 @@ function Login({ userLoggedIn }) {
                     placeholder='Email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    autoCapitalize='none'
                 />
                 <input
                     className='login__input'
