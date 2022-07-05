@@ -1,6 +1,6 @@
 import './NewUser.scss';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { apiUrl } from '../../utils/api'
 import { Link } from 'react-router-dom';
 import InvalidInput from '../InvalidInput/InvalidInput';
@@ -17,7 +17,7 @@ function NewUser(props) {
     const [isValidEmail, setValidEmail] = useState(true)
     const [isValidPassword, setValidPassword] = useState(true)
     const [isRegistered, setRegistered] = useState(false)
-
+    
     const handleSubmit = () => {
         if (isSignupValid()) {
             const newUser = {
