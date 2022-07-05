@@ -68,7 +68,7 @@ function DashboardPage({ isAuth, userLoggedIn }) {
                 })
                 .catch(err => console.error(err))
         }
-    }, [])
+    }, [isAuth])
 
     useEffect(() => {
         if (validBudgetExists() && !validTrackerExists()) {
