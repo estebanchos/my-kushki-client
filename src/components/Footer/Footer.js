@@ -10,17 +10,23 @@ function Footer() {
             <section className="contact">
                 <h2 className="contact__title">Let's get in touch!</h2>
                 <article className="contact__contacts-container">
-                    <a className="contact__link" href="mailto:charlie@carlosocampo.ca"><img className="contact__icon"
-                        src={mailIcon} alt="email envelope" /></a>
-                    <a className="contact__link" href="https://www.linkedin.com/in/carlosocampo/"><img className="contact__icon"
-                        src={linkedinIcon} alt="linkedin icon" /></a>
-                    <a className="contact__link" href="https://github.com/estebanchos"><img className="contact__icon"
-                        src={githubIcon} alt="github icon" /></a>
+                    <a className="contact__link" href="mailto:charlie@carlosocampo.ca">
+                        <img className="contact__icon"
+                            src={mailIcon} alt="email envelope" />
+                    </a>
+                    <a className="contact__link" href="https://www.linkedin.com/in/carlosocampo/" target='_blank'>
+                        <img className="contact__icon"
+                            src={linkedinIcon} alt="linkedin icon" />
+                    </a>
+                    <a className="contact__link" href="https://github.com/estebanchos" target='_blank'>
+                        <img className="contact__icon"
+                            src={githubIcon} alt="github icon" />
+                    </a>
                 </article>
             </section>
             <section className="author">
                 <img className="author__icon" src={charlieIcon} alt="emoticon from Charlie" />
-                    <p className="author__signature">a website made by Charlie</p>
+                <p className="author__signature">a website made by Charlie</p>
             </section>
         </footer>
     );
