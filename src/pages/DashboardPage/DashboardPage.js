@@ -51,6 +51,7 @@ function DashboardPage({ isAuth, userLoggedIn }) {
         setShowNewBudgetModal(false)
         setShowNewTrackerModal(true)
         setProgress(1)
+        document.body.scrollTop = 0
     }
 
     useEffect(() => {
@@ -121,7 +122,7 @@ function DashboardPage({ isAuth, userLoggedIn }) {
                     authHeader={authHeader}
                 />
             </div>
-            <div className={progress === 0 ? '' : 'show-tracked-budget--hidden'}>
+            <div className={validBudgetExists() && showNewBudgetModal ? '' : 'show-tracked-budget--hidden'}>
                 <Budget budget={budget} />
             </div>
             <div className={showTrackerMenu ? `main-dp__menu-budget` : `main-dp__menu-hidden`}>
