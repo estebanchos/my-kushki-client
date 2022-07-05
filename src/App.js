@@ -11,6 +11,7 @@ import LearnPage from './pages/LearnPage/LearnPage';
 import Footer from './components/Footer/Footer';
 import PlaceholderPage from './pages/PlaceholderPage/PlaceholderPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import ArticlePage from './pages/ArticlePage/ArticlePage';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />} />
             <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} userLoggedIn={userLoggedIn} {...props} />} />
             <Route path='/learn/placeholder' component={PlaceholderPage} />
+            <Route exact path='/learn/articles/:articleId' component={ArticlePage} />
           </Switch>
         </ScrollToTop>
         <Footer />

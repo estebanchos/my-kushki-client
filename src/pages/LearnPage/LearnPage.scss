@@ -48,6 +48,7 @@
         display: flex;
         overflow-x: scroll;
         scroll-behavior: smooth;
+        padding: 1rem;
         padding-left: 1.5rem;
         @include desktop {
             overflow-x: visible;
