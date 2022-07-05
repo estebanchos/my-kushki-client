@@ -2,7 +2,7 @@ import './ContactPage.scss';
 import { useState } from 'react';
 import Chat from '../../components/Chat/Chat';
 import { Tooltip } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 
 
 function ContactPage({ isAuth }) {

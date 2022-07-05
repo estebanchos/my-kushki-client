@@ -7,7 +7,7 @@ import house from '../../assets/images/house.png';
 import invest from '../../assets/images/invest.png';
 import retirement from '../../assets/images/retirement.png';
 import taxes from '../../assets/images/taxes.png';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import { Carousel } from 'antd';
 
 function HomePage() {
