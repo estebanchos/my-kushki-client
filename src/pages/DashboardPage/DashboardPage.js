@@ -40,8 +40,8 @@ function DashboardPage({ isAuth, userLoggedIn }) {
         return false
     }
 
-    const startNewBudget = () => { 
-        setShowNewBudgetModal(true) 
+    const startNewBudget = () => {
+        setShowNewBudgetModal(true)
         setShowBudgetMenu(false)
         setShowTrackerMenu(true)
     }
@@ -138,7 +138,9 @@ function DashboardPage({ isAuth, userLoggedIn }) {
                     budget={budget}
                     tracker={tracker}
                     setTracker={setTracker}
-                    authHeader={authHeader} />
+                    authHeader={authHeader}
+                    validTrackerExists={validTrackerExists}
+                />
             </div>
         </main>
     );

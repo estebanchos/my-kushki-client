@@ -6,7 +6,7 @@ import addIcon from '../../assets/icons/add_box_light.svg';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api';
 
-function NewTracker({ budget, tracker, setTracker, authHeader }) {
+function NewTracker({ budget, tracker, setTracker, authHeader, validTrackerExists }) {
     const [selectedCategory, setSelectedCategory] = useState('')
     const [expenseAmount, setExpenseAmount] = useState(null)
     const [expenseItem, setExpenseItem] = useState('')
@@ -179,6 +179,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                                                     const { formattedValue, value } = values
                                                     setExpenseAmount(value)
                                                 }}
+                                                onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
                                             />
                                         </div>
                                     </div>
@@ -190,7 +191,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                             </div>
                         </div>
                     </section>
-                    <section className='new-tracker__expenses-tracker'>
+                    <section className={validTrackerExists() ? 'new-tracker__expenses-tracker' : 'new-tracker__expenses-tracker--hidden'}>
                         <article className='expenses__container'>
                             <h2 className='expenses__title'>Your Expenses</h2>
                             <ul className='expenses__table'>
