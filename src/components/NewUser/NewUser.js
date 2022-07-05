@@ -98,6 +98,7 @@ function NewUser(props) {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
                 />
                 <div className='show-password'>
                     <img
