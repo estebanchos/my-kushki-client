@@ -18,16 +18,20 @@ function Header({ isAuth, userLoggedOut }) {
         <div className='container'>
             <header className='header'>
                 <div className='header__top'>
-                    <span className='header__logo'>my Kushki</span>
+                    <Link to='/' className='header__logo-link'>
+                        <span className='header__logo'>my Kushki</span>
+                    </Link>
                     <div className='header__top-right'>
                         <Link
                             to='/login'
-                            className={`header__auth ${isAuth ? 'header__auth--hide' : ''}`}
-                        >Log In</Link>
+                            className={`header__auth ${isAuth ? 'header__auth--hide' : ''}`}>
+                            Log In
+                        </Link>
                         <button
                             className={`header__auth ${isAuth ? '' : 'header__auth--hide'}`}
-                            onClick={logOut}
-                        >Log Out</button>
+                            onClick={logOut}>
+                            Log Out
+                        </button>
                         <Hamburger toggled={isShowingNav} toggle={setShowNav} color='#fff' rounded label='Show navigation menu' />
                     </div>
                 </div>

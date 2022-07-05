@@ -45,7 +45,7 @@ ul.budget__table, ul.labels, ul.item, ul.total {
     display: flex;
     justify-content: space-between;
     &__value {
-        width: 6rem;
+        width: 8rem;
         overflow-x: hidden;
         @include tablet {
             width: 10rem;

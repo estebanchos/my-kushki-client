@@ -1,6 +1,6 @@
 import './NewUser.scss';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { apiUrl } from '../../utils/api'
 import { Link } from 'react-router-dom';
 import InvalidInput from '../InvalidInput/InvalidInput';
@@ -17,7 +17,7 @@ function NewUser(props) {
     const [isValidEmail, setValidEmail] = useState(true)
     const [isValidPassword, setValidPassword] = useState(true)
     const [isRegistered, setRegistered] = useState(false)
-
+    
     const handleSubmit = () => {
         if (isSignupValid()) {
             const newUser = {
@@ -89,6 +89,7 @@ function NewUser(props) {
                     placeholder='Email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    autoCapitalize='none'
                 />
                 <InvalidInput isValid={isValidEmail} message='Please enter a valid email' />
                 <input
@@ -97,6 +98,7 @@ function NewUser(props) {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
                 />
                 <div className='show-password'>
                     <img

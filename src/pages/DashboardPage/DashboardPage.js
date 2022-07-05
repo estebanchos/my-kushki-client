@@ -40,8 +40,8 @@ function DashboardPage({ isAuth, userLoggedIn }) {
         return false
     }
 
-    const startNewBudget = () => { 
-        setShowNewBudgetModal(true) 
+    const startNewBudget = () => {
+        setShowNewBudgetModal(true)
         setShowBudgetMenu(false)
         setShowTrackerMenu(true)
     }
@@ -51,6 +51,7 @@ function DashboardPage({ isAuth, userLoggedIn }) {
         setShowNewBudgetModal(false)
         setShowNewTrackerModal(true)
         setProgress(1)
+        document.body.scrollTop = 0
     }
 
     useEffect(() => {
@@ -103,7 +104,7 @@ function DashboardPage({ isAuth, userLoggedIn }) {
                 <Steps size="small" current={progress}>
                     <Step title="Create Budget" />
                     <Step title="Track Expenses" />
-                    <Step title="Get In Control" />
+                    <Step title="Build your future" />
                 </Steps>
             </div>
             <div className={showBudgetMenu ? `main-dp__menu-budget` : `main-dp__menu-hidden`}>
@@ -121,7 +122,7 @@ function DashboardPage({ isAuth, userLoggedIn }) {
                     authHeader={authHeader}
                 />
             </div>
-            <div className={progress === 0 ? '' : 'show-tracked-budget--hidden'}>
+            <div className={validBudgetExists() && showNewBudgetModal ? '' : 'show-tracked-budget--hidden'}>
                 <Budget budget={budget} />
             </div>
             <div className={showTrackerMenu ? `main-dp__menu-budget` : `main-dp__menu-hidden`}>
@@ -137,7 +138,9 @@ function DashboardPage({ isAuth, userLoggedIn }) {
                     budget={budget}
                     tracker={tracker}
                     setTracker={setTracker}
-                    authHeader={authHeader} />
+                    authHeader={authHeader}
+                    validTrackerExists={validTrackerExists}
+                />
             </div>
         </main>
     );

@@ -64,6 +64,7 @@ function NewBudget({ budget, setBudget, authHeader }) {
                                         const { formattedValue, value } = values
                                         setCategoryAmount(value)
                                     }}
+                                    onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
                                 />
                             </div>
                         </div>

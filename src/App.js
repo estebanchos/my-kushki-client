@@ -10,6 +10,7 @@ import Login from './components/LogIn/Login';
 import LearnPage from './pages/LearnPage/LearnPage';
 import Footer from './components/Footer/Footer';
 import PlaceholderPage from './pages/PlaceholderPage/PlaceholderPage';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 function App() {
 
@@ -27,15 +28,17 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header isAuth={isAuth} userLoggedOut={userLoggedOut} />
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/register' component={NewUser} />
-          <Route path='/login' render={(props) => <Login userLoggedIn={userLoggedIn} {...props} />} />
-          <Route exact path='/learn' component={LearnPage} />
-          <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />} />
-          <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} userLoggedIn={userLoggedIn} {...props} />} />
-          <Route path='/learn/placeholder' component={PlaceholderPage} />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route path='/register' component={NewUser} />
+            <Route path='/login' render={(props) => <Login userLoggedIn={userLoggedIn} {...props} />} />
+            <Route exact path='/learn' component={LearnPage} />
+            <Route path='/contactus' render={(props) => <ContactPage isAuth={isAuth} {...props} />} />
+            <Route path='/dashboard' render={(props) => <DashboardPage isAuth={isAuth} userLoggedIn={userLoggedIn} {...props} />} />
+            <Route path='/learn/placeholder' component={PlaceholderPage} />
+          </Switch>
+        </ScrollToTop>
         <Footer />
       </BrowserRouter>
     </div>
