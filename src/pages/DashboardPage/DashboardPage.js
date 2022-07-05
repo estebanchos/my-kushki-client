@@ -103,7 +103,7 @@ function DashboardPage({ isAuth, userLoggedIn }) {
                 <Steps size="small" current={progress}>
                     <Step title="Create Budget" />
                     <Step title="Track Expenses" />
-                    <Step title="Get In Control" />
+                    <Step title="Build your future" />
                 </Steps>
             </div>
             <div className={showBudgetMenu ? `main-dp__menu-budget` : `main-dp__menu-hidden`}>
