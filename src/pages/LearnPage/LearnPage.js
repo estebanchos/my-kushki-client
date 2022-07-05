@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Intro from '../../components/Intro/Intro';
 import LearnCard from '../../components/LearnCard/LearnCard';
 import './LearnPage.scss'
@@ -19,11 +20,13 @@ function LearnPage() {
                         {/* ============ BASICS ============ */}
                         <h3 className='path__title'>Basics</h3>
                         <div className='path__carousel'>
-                            <LearnCard
-                                title='Budget Basics'
-                                description='Understanding Cash Flow and how to create a budget'
-                                index='1'
-                            />
+                            <Link to={`/learn/articles/basics-budget`} >
+                                <LearnCard
+                                    title='Budget Basics'
+                                    description='Understanding Cash Flow and how to create a budget'
+                                    index='1'
+                                />
+                            </Link>
                             <LearnCard
                                 title='Saving Basics'
                                 description='Why save? How to save?'
