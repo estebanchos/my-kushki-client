@@ -41,6 +41,9 @@
 
     &__logo-link {
         color: $color-font-secondary;
+        &:hover {
+            color: $color-font-secondary;
+        }
     }
 
     &__auth {
