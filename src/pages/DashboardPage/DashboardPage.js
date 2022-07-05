@@ -22,8 +22,6 @@ function DashboardPage({ isAuth, userLoggedIn }) {
     const [showTrackerMenu, setShowTrackerMenu] = useState(false)
     const [showNewBudgetModal, setShowNewBudgetModal] = useState(false)
     const [showNewTrackerModal, setShowNewTrackerModal] = useState(false)
-    // const [showExistingBudget, setShowExistingBudget] = useState(false)
-    // const [showExistingTracker, setShowExistingTracker] = useState(false)
 
     const token = sessionStorage.getItem('token')
     const authHeader = { Authorization: 'Bearer ' + token }
