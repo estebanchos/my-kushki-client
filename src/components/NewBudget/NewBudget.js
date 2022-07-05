@@ -1,7 +1,6 @@
 import './NewBudget.scss'
 import { budgetCategories } from '../../utils/budgetCategories';
 import { useState } from 'react';
-import InvalidInput from '../InvalidInput/InvalidInput';
 import addIcon from '../../assets/icons/add_box_light.svg';
 import NumberFormat from 'react-number-format';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
@@ -38,9 +37,10 @@ function NewBudget({ budget, setBudget, authHeader }) {
             <h2 className='new-budget__title'>Create your budget</h2>
 
             <ul className='new-budget__list'>
-                <li className='new-budget__list-item'>Look at your expenses</li>
-                <li className='new-budget__list-item'>Estimate future expenses</li>
-                <li className='new-budget__list-item'>Learn more about creating your budget on "some link"</li>
+                <li className='new-budget__list-item'>Review your current monthly expenses</li>
+                <li className='new-budget__list-item'>Plan your monthly amount for each category bucket</li>
+                <li className='new-budget__list-item'>Review our <a className='new-budget__list-link' href='/learn/articles/basics-budget' target='_blank'>Budget Basics</a> article for tips on creating your budget
+                </li>
             </ul>
             <div className='new-budget__container'>
                 <h3 className='new-budget__header'>New Budget</h3>
@@ -61,7 +61,7 @@ function NewBudget({ budget, setBudget, authHeader }) {
                                     thousandSeparator={true}
                                     value={categoryAmount}
                                     onValueChange={(values) => {
-                                        const { formattedValue, value } = values
+                                        const { value } = values
                                         setCategoryAmount(value)
                                     }}
                                     onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
