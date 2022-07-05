@@ -23,10 +23,6 @@ function ContactPage({ isAuth }) {
         setRoom(e.target.value)
     }
 
-    // if (!isAuth) {
-    //     return <div>Sign in please</div>
-    // }
-
     return (
         <>
             <main className='contactus'>
@@ -48,7 +44,7 @@ function ContactPage({ isAuth }) {
                     </article>
                 </div>
             </main>
-            <h3>Join Chat</h3>
+            {/* <h3>Join Chat</h3>
             <form onSubmit={joinRoom}>
                 <input type='text' name='username' placeholder='Name' value={username} onChange={handleUsernameChange} />
                 <input type='text' name='room' placeholder='Room' value={room} onChange={handleRoomChange} />
@@ -58,7 +54,7 @@ function ContactPage({ isAuth }) {
                     Join Now
                 </button>
             </form>
-            <Chat showChat={showChat} username={username} room={room} />
+            <Chat showChat={showChat} username={username} room={room} /> */}
         </>
     );
 }
