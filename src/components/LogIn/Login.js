@@ -8,14 +8,14 @@ import { apiUrl } from '../../utils/api'
 import { Link, useHistory } from 'react-router-dom';
 
 function Login({ userLoggedIn }) {
-    
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [isValidLogin, setValidLogin] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     let history = useHistory()
-    
+
     const redirectToDashboard = () => history.push('/dashboard')
 
     const handleSubmit = () => {
@@ -57,6 +57,7 @@ function Login({ userLoggedIn }) {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
                 />
                 <div className='show-password'>
                     <img
@@ -75,7 +76,8 @@ function Login({ userLoggedIn }) {
                 <InvalidInput isValid={isValidLogin} message={errorMessage} />
                 <button
                     className='login__button'
-                    onClick={handleSubmit}>
+                    onClick={handleSubmit}
+                >
                     Log in
                 </button>
             </div>
