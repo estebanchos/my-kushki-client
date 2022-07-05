@@ -29,17 +29,17 @@ function DashboardPage({ isAuth, userLoggedIn }) {
     const authHeader = { Authorization: 'Bearer ' + token }
 
     function validBudgetExists() {
-        if (budget.length < 1) {
-            return false
+        if (budget.length > 0) {
+            return true
         }
-        return true
+        return false
     }
 
     function validTrackerExists() {
-        if (tracker.length < 1) {
-            return false
+        if (tracker.length > 0) {
+            return true
         }
-        return true
+        return false
     }
 
     const startNewBudget = () => { 
@@ -78,8 +78,11 @@ function DashboardPage({ isAuth, userLoggedIn }) {
             setShowTrackerMenu(true)
         }
         if (validBudgetExists() && validTrackerExists()) {
-            setProgress(1)
+            setProgress(2)
+            setShowNewBudgetModal(false)
+            setShowBudgetMenu(false)
             setShowNewTrackerModal(true)
+            setShowTrackerMenu(false)
         }
     }, [budget, tracker])
 

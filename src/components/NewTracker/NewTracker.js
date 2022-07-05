@@ -1,7 +1,7 @@
 import './NewTracker.scss';
 import NumberFormat from 'react-number-format';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import addIcon from '../../assets/icons/add_box_light.svg';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api';
@@ -10,6 +10,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
     const [selectedCategory, setSelectedCategory] = useState('')
     const [expenseAmount, setExpenseAmount] = useState(null)
     const [expenseItem, setExpenseItem] = useState('')
+    const [totalRemaining, setTotalRemaining] = useState(0)
 
     const budgetAmountArray = budget.map(item => Number(item.amount))
     let budgetTotal = 0
@@ -52,6 +53,12 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
         })
     }
 
+    useEffect(() => {
+        let expenses = categoriesActualSpend.map(category => category.amount)
+        let totalExpenses = expenses.reduce((a, b) => a + b, 0)
+        setTotalRemaining(budgetTotal - totalExpenses)
+    }, [tracker])
+
     const handleSubmit = () => {
         if (selectedCategory && expenseAmount && expenseItem) {
             const newExpenseItem = {
@@ -65,6 +72,9 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                     setSelectedCategory('')
                     setExpenseAmount(0)
                     setExpenseItem('')
+                    let expenses = categoriesActualSpend.map(category => category.amount)
+                    let totalExpenses = expenses.reduce((a, b) => a + b)
+                    setTotalRemaining(budgetTotal - totalExpenses)
                 })
                 .catch(err => console.error(err))
         }
@@ -124,10 +134,11 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                                     </li>
                                     <li className='total__value'>
                                         <NumberFormat
+                                            className={totalRemaining >= 0 ? '' : 'total-spent--over'}
                                             displayType={'text'}
                                             thousandSeparator={true}
                                             prefix={'$'}
-                                            value={100}
+                                            value={totalRemaining}
                                         />
                                     </li>
                                 </ul>
@@ -169,7 +180,6 @@ function NewTracker({ budget, tracker, setTracker, authHeader }) {
                                                     setExpenseAmount(value)
                                                 }}
                                             />
-                                            {/* <InvalidInput isValid={isValidAmount} message='Please enter a valid number' /> */}
                                         </div>
                                     </div>
                                     <div className='expense-inputs__action-container' onClick={handleSubmit}>
