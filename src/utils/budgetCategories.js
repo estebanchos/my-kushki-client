@@ -7,7 +7,8 @@ export const budgetCategories = [
     'Utilities',
     'Entertainment',
     'Subscriptions',
-    'Saving/Investing',
-    'Emergency Fund'
+    'Saving',
+    'Emergency Fund',
+    'Others'
 ]
 
