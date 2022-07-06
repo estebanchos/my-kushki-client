@@ -1,3 +1,7 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+
 .chat {
     width: 300px;
     height: 420px;

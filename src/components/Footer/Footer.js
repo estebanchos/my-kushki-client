@@ -24,10 +24,10 @@ function Footer() {
                     </a>
                 </article>
             </section>
-            <section className="author">
+            {/* <section className="author">
                 <img className="author__icon" src={charlieIcon} alt="emoticon from Charlie" />
                 <p className="author__signature">a website made by Charlie</p>
-            </section>
+            </section> */}
         </footer>
     );
 }

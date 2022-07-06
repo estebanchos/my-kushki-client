@@ -14,7 +14,9 @@
     }
 
     &__title {
-        @include font-family-title
+        @include font-family-title;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
     }
     &__progress {
         position: relative;
@@ -63,7 +65,7 @@
     &__title {
         @include font-family-title;
         font-size: 2rem;
-        margin-top: 1rem;
+        margin-top: 2rem;
         margin-bottom: 0.25rem;
     }
 

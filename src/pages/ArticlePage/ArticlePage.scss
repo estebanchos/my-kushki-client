@@ -1,0 +1,99 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.ap-container {
+    margin: 1rem 2rem;
+    @include font-family-body;
+
+    @include tablet {
+        margin: 1.5rem 2.5rem;
+        display: flex;
+    }
+
+    @include desktop {
+        @include desktop-fixed-size;
+    }
+}
+
+.ap-main {
+    @include tablet {
+        width: 65%;
+        margin-right: 2.5rem;
+    }
+    &__title {
+        margin-top: 2rem;
+        font-size: 1.75rem;
+        font-weight: 600;
+        @include tablet {
+            margin-top: 1rem;
+            
+        }
+    }
+
+    &__container {
+        text-align: left;
+    }
+    &__intro {
+        font-size: 1rem;
+    }
+    &__subtitle{
+        font-size: 1.3725rem;
+    }
+    &__copy {
+        font-size: 1rem;
+    }
+}
+
+.ap-aside {
+    @include tablet {
+        width: 30%;
+        margin-top: 5rem;
+    }
+    &__title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        @include tablet {
+            font-size: 1.25rem;
+        }
+    }
+    &__card {
+        @include card-style;
+        text-align: left;
+        padding: 1rem;
+    }
+    
+}
+
+.aside-card {
+    margin: 1.25rem 0;
+    min-height: 125px;
+    &__title {
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        color: $color-font-secondary;
+        font-size: 1.25rem;
+        @include tablet {
+            font-size: 1rem;
+        }
+    }
+    &__img-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__image {
+        width: 8rem;
+    }
+}
+
+.card-color-0 {
+    background-color: $color-card-one;
+}
+
+.card-color-1 {
+    background-color: $color-card-two;
+}
+
+.card-color-2 {
+    background-color: $color-card-three;
+}
