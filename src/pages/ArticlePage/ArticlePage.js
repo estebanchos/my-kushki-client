@@ -22,9 +22,14 @@ function ArticlePage(props) {
             <main className='ap-main'>
                 <h1 className='ap-main__title'>{articleContent.title}</h1>
                 <div className='ap-main__container'>
-                    <p className='ap-main__intro'>{articleContent.intro}</p>
+                    {articleContent.intro.split('\n').map(paragraph => {
+                        return <p className='ap-main__intro'>{paragraph}</p>
+                    })}
                     <h2 className='ap-main__subtitle'>{articleContent.subheader}</h2>
-                    <p className='ap-main__copy'>{articleContent.copy}</p>
+                    {articleContent.copy.split('\n').map(paragraph => {
+                        return <p className='ap-main__copy'>{paragraph}</p>
+                    })}
+                    {/* <p className='ap-main__copy'>{articleContent.copy}</p> */}
                 </div>
             </main>
             <aside className='ap-aside'>
