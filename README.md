@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# myKushki - Financial Literacy
+My Kushki is a web app designed to help educate First Nations members of Northern Ontario on financial literacy and provide them with tools to help them manage their finances.
+This MVP was completed in two weeks. Enhancements are expected as I start working closely with the First Nations community.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Back-end repo: [my-kushki server](https://github.com/estebanchos/my-kushki-server "my-kushki server")
 
-## Available Scripts
+## Problem Space
+The general population lacks financial education and the skills to plan their financial future successfully. On top of that, First Nations live in remote areas and lack access to resources available in cities like internet access.
 
-In the project directory, you can run:
+Given that First Nations members generally access the internet through their smartphones and financial education webpages out there are not tailored to their specific situation and needs, My Kushki’s objective is to provide tailored financial literacy training optimized to be consumed on a smartphone screen.
 
-### `npm start`
+## Features
+* Account sign up and login
+* Users can access their info anywhere
+* Creating and tracking a budget
+* Creating and tracking expenses and the impact on the monthly budget
+* Learning modules structure, from basic to advance - pending content creation
+    * Recommended articles to external sources to strengthen learning
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Teck Stack
+### Front-end
+* React
+* Sass
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Back-end
+* Node.js
+* Express
+* MongoDB Atlas
+* Mongoose
+* JWT
 
-### `npm test`
+## Dependencies
+### Front-end
+* Axios
+* antd
+* hamburger-react
+* react-router-dom@5.3
+* react-number-format
+### Back-end
+* bcryotjs
+* cors
+* dotenv
+* nodemon
+* uniqid
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Environment dependency
+### Back-end
+Create a .env file and include:
+* PORT: port where the server will run
+* MONGO_URL: this is the url to your mongoDB Atlas database
+* JWT_KEY: key to create JWT tokens
 
-### `npm run build`
+## Installation - Client
+### Clone
+Clone repo locally:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`git clone git@github.com:estebanchos/my-kushki-client.git`
+### Setup
+* Open the project folder and install dependencies.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm i`
+### Run
+* Run react app locally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm start`
 
-### `npm run eject`
+## Installation - Server
+### Clone
+Clone repo locally:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`git clone git@github.com:estebanchos/my-kushki-server.git`
+### Setup
+* Open the project folder and install dependencies.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm i`
+### Run
+* Run server locally using nodemon.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`npm run dev`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Next Steps
+### Features
+* Edit and delete budget and expenses
+* Implement chat feature with socket.io
+* Multi-month tracking - opening, editing and deleting months
+* Yearly tracking - yearly summary and month-to-month insights/comparisons
+* Savings / Investing tool to help estimate the impact of saving and/or investing
+### Content
+* Meet with the First Nations community to understand pain points and most critical content
+* Phase-out content development based on community priorities and pain points
 
-## Learn More
+## Lessons Learned
+* As a Junior Dev I enjoyed working with Mongo and Mongoose more than MySQL and Knex.
+* The best way to work for me was to implement a feature, debug it, and only then start styling.
+* I managed calculations (e.g. budget total, or category remaining budget) on the front-end. I think it would've been easier to deal with the them in the back-end and just fetch them in the front-end. I will test this approach on the next iteration.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact Info
+[Email](mailto:charlie@carlosocampo.ca "Email")
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[LinkedIn](https://www.linkedin.com/in/carlosocampo/ "LinkedIn")
