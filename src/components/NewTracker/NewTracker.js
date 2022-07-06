@@ -102,6 +102,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader, validTrackerExist
             <ul className='new-budget__list'>
                 <li className='new-budget__list-item'>Enter an expense soon after paying for a product or service</li>
                 <li className='new-budget__list-item'>Or you can review expenses later on your bank or credit card statement</li>
+                <li className='new-budget__list-item'>Track the remaining budget for each category</li>
                 <li className='new-budget__list-item'>Select a category for the expense: <Popover title='Category and sample expenses' content={budgetTips} trigger='click'><span className='new-budget__list-link'>Category Examples</span>
                 </Popover>
                 </li>

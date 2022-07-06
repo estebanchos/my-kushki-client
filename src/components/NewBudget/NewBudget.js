@@ -53,9 +53,8 @@ function NewBudget({ budget, setBudget, authHeader }) {
             <h2 className='new-budget__title'>Create your budget</h2>
 
             <ul className='new-budget__list'>
-                <li className='new-budget__list-item'>Review your current monthly expenses</li>
-                <li className='new-budget__list-item'>Plan your monthly amount for each category bucket</li>
-                <li className='new-budget__list-item'>Review our <a className='new-budget__list-link' href='/learn/articles/basics-budget' target='_blank'>Budget Basics</a> article for tips on creating your budget
+                <li className='new-budget__list-item'>Plan the maximum monthly amount you want to spend for each category</li>
+                <li className='new-budget__list-item'>Review our <a className='new-budget__list-link' href='/learn/articles/basics-budget' target='_blank'>Budget Basics</a> article to learn how to make and stick to a budget
                 </li>
                 <li className='new-budget__list-item'>Or have a quick look at some of our tips: <Popover title='Calculate your income after tax and group your expenses in buckets. For example:' content={budgetTips} trigger='click'><span className='new-budget__list-link'>Quick Tips</span>
                     </Popover>
