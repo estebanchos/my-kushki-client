@@ -31,7 +31,7 @@ function ArticlePage(props) {
                 <h3 className='ap-aside__title'>Recommended Articles</h3>
                 {budgetBasics.map((article, index) => {
                     return (
-                        <article key={index} className='ap-aside__card aside-card'>
+                        <article key={index} className={`ap-aside__card aside-card card-color-${index}`}>
                             <a
                                 className='aside-card__link'
                                 href={article.url}

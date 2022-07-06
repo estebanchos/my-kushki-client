@@ -7,7 +7,7 @@ import axios from 'axios';
 import { apiUrl } from '../../utils/api'
 import { Link, useHistory } from 'react-router-dom';
 
-function Login({ userLoggedIn }) {
+function Login({ userLoggedIn, link }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -16,7 +16,7 @@ function Login({ userLoggedIn }) {
     const [errorMessage, setErrorMessage] = useState('')
     let history = useHistory()
 
-    const redirectToDashboard = () => history.push('/dashboard')
+    const redirectToNextPage = () => history.push(link || '/dashboard')
 
     const handleSubmit = () => {
         if (email && password) {
@@ -29,10 +29,10 @@ function Login({ userLoggedIn }) {
                     setPassword('')
                     sessionStorage.setItem('token', res.data.token)
                     userLoggedIn()
-                    redirectToDashboard()
+                    redirectToNextPage()
                 })
                 .catch(err => {
-                    console.log(err)
+                    console.error(err)
                     setValidLogin(err.response.data.validLogin)
                     setErrorMessage(err.response.data.message)
                 })

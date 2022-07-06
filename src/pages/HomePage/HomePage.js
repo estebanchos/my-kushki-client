@@ -24,7 +24,7 @@ function HomePage() {
                 <div className='questions'>
                     <h3 className='questions__title'>Be ready to make your financial decisions</h3>
                     <div className='questions__gallery'>
-                        <Carousel autoplay autoplaySpeed={5000} dots={false}>
+                        <Carousel autoplay autoplaySpeed={3500} dots={false}>
                             <div className='questions__container'>
                                 <img className='questions__image' src={house} alt='person working with a small model of a house' />
                                 <p className='questions__question'>Buying or renting a place?</p>

@@ -1,42 +1,37 @@
 import './Chat.scss';
 import { useEffect, useState } from 'react';
-import { currentTime } from '../../utils/date'
 import ScrollToBottom from 'react-scroll-to-bottom';
-import io from 'socket.io-client';
+// import { apiUrl } from '../../utils/api';
 
-// const ENDPOINT = 'localhost:8080'
-// const socket = io.connect(ENDPOINT)
+// '/contactus/chat' 
 
-function Chat({ showChat, username, room }) {
+function Chat({ socket, room, name }) {
     const [currentMessage, setCurrentMessage] = useState('')
     const [messageList, setMessageList] = useState([])
 
-    // const sendMessage = () => {
-    //     if (currentMessage !== '') {
-    //         const data = {
-    //             room: room,
-    //             author: username,
-    //             message: currentMessage,
-    //             time: currentTime()
-    //         }
-    //         socket.emit('send_message', data)
-    //         setCurrentMessage('')
-    //         setMessageList([...messageList, data])
-    //     }
-    // }
+    const sendMessage = async () => {
+        if (currentMessage !== '') {
+            const messageData = {
+                room: room,
+                author: name,
+                message: currentMessage,
+            }
 
-    // useEffect(() => {
-    //     socket.on('receive_message', (data) => {
-    //         setMessageList([...messageList, data])
-    //     })
-    // },[socket, messageList])
+           await socket.emit('send_message', messageData)
+            setMessageList((list) => [...list, messageData]);
+            setCurrentMessage('')
+        }
+    }
 
-    // useEffect(() => {
-    //     socket.on('join', {username, room})
-    // }, [])
+    useEffect(() => {
+        socket.on('receive_message', (data) => {
+            console.log(data)
+            setMessageList((list) => [...list, data]);
+        });
+    }, [socket]);
 
     return (
-        <div className={`chat${showChat ? '' : '--hidden'}`}>
+        <div className={`chat`}>
             <div className='chat__header'>
                 <p className='chat__header-title'>Live Chat</p>
             </div>
@@ -46,44 +41,37 @@ function Chat({ showChat, username, room }) {
                         return (
                             <div
                                 key={index}
-                                className={`chat__message ${message.author === username ? 'chat__message--me' : 'chat__message--other'}`}
+                                className={`chat__message ${message.author === name ? 'chat__message--me' : 'chat__message--other'}`}
                             >
-                                <div className={`message ${message.author === username ? 'message--me' : 'message--other'}`}>
-                                    <div className={`message__content ${message.author === username ? '' : 'message__content--other'}`}>
-                                        <p
-                                            className={`message__text`}
-                                        >
+                                <div className={`message ${message.author === name ? 'message--me' : 'message--other'}`}>
+                                    <div className={`message__content ${message.author === name ? '' : 'message__content--other'}`}>
+                                        <p className={`message__text`}>
                                             {message.message}
                                         </p>
                                     </div>
                                     <div className='message__meta'>
-                                        <p
-                                            className={`message__time ${message.author === username ? '' : 'message__time--other'}`}
-                                        >
+                                        <p className={`message__time ${message.author === name ? '' : 'message__time--other'}`}>
                                             {message.time}
                                         </p>
-                                        <p
-                                            className={`message__author ${message.author === username ? '' : 'message_author--other'}`}
-                                        >
-                                            {message.author === username ? 'Me' : message.author}
+                                        <p className={`message__author ${message.author === name ? '' : 'message_author--other'}`}>
+                                            {message.author === name ? 'Me' : message.author}
                                         </p>
                                     </div>
                                 </div>
-
                             </div>
                         )
                     })}
                 </ScrollToBottom>
             </div >
             <div className='chat__footer'>
-                {/* <input
+                <input
                     className='chat__input'
                     value={currentMessage}
                     placeholder='Enter message...'
                     onChange={(e) => setCurrentMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
                 />
-                <button onClick={sendMessage}>&#9658;</button> */}
+                <button onClick={sendMessage}>&#9658;</button>
             </div>
         </div >
     );

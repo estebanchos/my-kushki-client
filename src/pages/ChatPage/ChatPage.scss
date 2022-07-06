@@ -1,0 +1,45 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/colors' as *;
+
+.main-chat {
+    &__title {
+        @include font-family-title;
+        margin: 1.25rem 0;
+    }
+
+    &__join-container {
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__join-button {
+        @include button-style;
+        width: fit-content;
+        margin: 0 auto;
+        margin-bottom: 1.25rem;
+        background-color: $color-card-one;
+        font-size: 1rem;
+
+        @include tablet {
+            font-size: 1.25rem;
+        }
+    }
+
+    &__placeholder {
+        height: 300px;
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__messages-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+
+        &--hidden {
+            display: none;
+        }
+    }
+}

@@ -4,7 +4,7 @@ import investopediaLogo from '../logos/investopedia.svg'
 export const budgetBasics = [
     {
         source: 'Wealthsimple',
-        title: 'How to Make a Budget',
+        title: 'How to Make a Budget: Simple steps',
         url: 'https://www.wealthsimple.com/en-ca/learn/how-to-make-a-budget',
         logo: wsLogo
     },
