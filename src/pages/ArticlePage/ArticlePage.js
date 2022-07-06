@@ -1,35 +1,32 @@
 import './ArticlePage.scss';
 import { articlesContentLibrary } from '../../assets/staticdata/articlesContent';
-import { useEffect, useState } from 'react';
 import { budgetBasics } from '../../assets/staticdata/articlesBasics';
 
 function ArticlePage(props) {
     const id = props.match.params.articleId
-    const [articleContent, setArticleContent] = useState(null)
-    let articleFound
+    let articleFound = articlesContentLibrary.find(article => article.id === id) || articlesContentLibrary[0]
 
-    useEffect(() => {
-        articleFound = articlesContentLibrary.find(article => article.id === id)
-        if (articleFound) setArticleContent(articleFound)
-    }, [])
-
-    if (!articleContent) {
-        return <></>
-    }
+    //  ### TODO - structure for when we populate the article dynamically
+    // const [articleContent, setArticleContent] = useState(null)
+    // useEffect(() => {
+    //     if (articleFound) setArticleContent(articleFound)
+    // }, [])
+    // if (!articleContent) {
+    //     return <></>
+    // }
 
     return (
         <div className='ap-container'>
             <main className='ap-main'>
-                <h1 className='ap-main__title'>{articleContent.title}</h1>
+                <h1 className='ap-main__title'>{articleFound.title}</h1>
                 <div className='ap-main__container'>
-                    {articleContent.intro.split('\n').map(paragraph => {
+                    {articleFound.intro.split('\n').map(paragraph => {
                         return <p className='ap-main__intro'>{paragraph}</p>
                     })}
-                    <h2 className='ap-main__subtitle'>{articleContent.subheader}</h2>
-                    {articleContent.copy.split('\n').map(paragraph => {
+                    <h2 className='ap-main__subtitle'>{articleFound.subheader}</h2>
+                    {articleFound.copy.split('\n').map(paragraph => {
                         return <p className='ap-main__copy'>{paragraph}</p>
                     })}
-                    {/* <p className='ap-main__copy'>{articleContent.copy}</p> */}
                 </div>
             </main>
             <aside className='ap-aside'>
@@ -41,6 +38,7 @@ function ArticlePage(props) {
                                 className='aside-card__link'
                                 href={article.url}
                                 target='_blank'
+                                rel="noopener noreferrer"
                             >
                                 <h3 className='aside-card__title'>{article.title}</h3>
                                 <div className='aside-card__img-container'>
