@@ -7,6 +7,8 @@ import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api'
 import { Popover } from 'antd';
+import hideIcon from '../../assets/icons/hide.svg';
+import showIcon from '../../assets/icons/show.svg';
 
 
 const budgetTips = (
@@ -29,6 +31,7 @@ function NewBudget({ budget, setBudget, authHeader }) {
     let categoriesList = budgetCategories
     const [selectedCategory, setSelectedCategory] = useState('')
     const [categoryAmount, setCategoryAmount] = useState(null)
+    const [showInstructions, setShowInstructions] = useState(true)
 
     const handleSubmit = () => {
         if (selectedCategory && categoryAmount) {
@@ -51,13 +54,36 @@ function NewBudget({ budget, setBudget, authHeader }) {
     return (
         <section className='new-budget'>
             <h2 className='new-budget__title'>Create your budget</h2>
-
-            <ul className='new-budget__list'>
+            <div className='show-instructions'>
+                <div
+                    className={`show-instructions__container${!showInstructions ? '' : '--hidden'}`}
+                    onClick={() => setShowInstructions(!showInstructions)}
+                >
+                    <img
+                        className={`show-instructions__icon`}
+                        src={showIcon}
+                        alt='show instructions icon'
+                    />
+                    <span className='show-instructions__text'>Show instructions</span>
+                </div>
+                <div
+                    className={`show-instructions__container${showInstructions ? '' : '--hidden'}`}
+                    onClick={() => setShowInstructions(!showInstructions)}
+                >
+                    <img
+                        className={`show-instructions__icon`}
+                        src={hideIcon}
+                        alt='hide instructions icon'
+                    />
+                    <span className='show-instructions__text'>Hide instructions</span>
+                </div>
+            </div>
+            <ul className={`new-budget__list${showInstructions ? '' : '--hidden'}`}>
                 <li className='new-budget__list-item'>Plan the maximum monthly amount you want to spend for each category</li>
                 <li className='new-budget__list-item'>Review our <a className='new-budget__list-link' href='/learn/articles/basics-budget' target='_blank'>Budget Basics</a> article to learn how to make and stick to a budget
                 </li>
                 <li className='new-budget__list-item'>Or have a quick look at some of our tips: <Popover title='Calculate your income after tax and group your expenses in buckets. For example:' content={budgetTips} trigger='click'><span className='new-budget__list-link'>Quick Tips</span>
-                    </Popover>
+                </Popover>
                 </li>
             </ul>
             <div className='new-budget__container'>
