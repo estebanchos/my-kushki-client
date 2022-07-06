@@ -31,6 +31,10 @@
             flex-direction: column;
             align-items: center;
         }
+
+        &--hidden {
+            display: none;
+        }
     }
 
     &__list-item {

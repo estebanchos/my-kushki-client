@@ -35,6 +35,7 @@
 
     &__expenses-tracker {
         margin-bottom: 2rem;
+
         &--hidden {
             display: none;
         }
@@ -174,6 +175,7 @@
         @include font-family-title;
         margin-top: 1rem;
         margin-bottom: 0;
+
         @include desktop {
             margin-bottom: 0.5rem;
         }
@@ -255,5 +257,28 @@
         margin: 1rem 1.5rem;
         padding: 1rem 0;
         border-top: 2px solid $color-border-card;
+    }
+}
+
+.show-instructions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+
+    &__container {
+       display: flex;
+       align-items: center;
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__icon {
+        width: 1.5rem;
+    }
+    &__text{
+        color: $color-font-alt;
+        margin-left: 0.25rem;
+        font-size: 0.85rem;
     }
 }

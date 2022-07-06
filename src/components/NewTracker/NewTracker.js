@@ -6,6 +6,8 @@ import addIcon from '../../assets/icons/add_box_light.svg';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api';
 import { Popover } from 'antd';
+import hideIcon from '../../assets/icons/hide.svg';
+import showIcon from '../../assets/icons/show.svg';
 
 const budgetTips = (
     <div>
@@ -27,6 +29,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader, validTrackerExist
     const [expenseAmount, setExpenseAmount] = useState(null)
     const [expenseItem, setExpenseItem] = useState('')
     const [totalRemaining, setTotalRemaining] = useState(0)
+    const [showInstructions, setShowInstructions] = useState(true)
 
     const budgetAmountArray = budget.map(item => Number(item.amount))
     let budgetTotal = 0
@@ -99,7 +102,31 @@ function NewTracker({ budget, tracker, setTracker, authHeader, validTrackerExist
     return (
         <section className='new-tracker'>
             <h2 className='new-tracker__title'>Track your monthly expenses</h2>
-            <ul className='new-budget__list'>
+            <div className='show-instructions'>
+                <div
+                    className={`show-instructions__container${!showInstructions ? '' : '--hidden'}`}
+                    onClick={() => setShowInstructions(!showInstructions)}
+                >
+                    <img
+                        className={`show-instructions__icon`}
+                        src={showIcon}
+                        alt='show instructions icon'
+                    />
+                    <span className='show-instructions__text'>Show instructions</span>
+                </div>
+                <div
+                    className={`show-instructions__container${showInstructions ? '' : '--hidden'}`}
+                    onClick={() => setShowInstructions(!showInstructions)}
+                >
+                    <img
+                        className={`show-instructions__icon`}
+                        src={hideIcon}
+                        alt='hide instructions icon'
+                    />
+                    <span className='show-instructions__text'>Hide instructions</span>
+                </div>
+            </div>
+            <ul className={`new-budget__list${showInstructions ? '' : '--hidden'}`}>
                 <li className='new-budget__list-item'>Enter an expense soon after paying for a product or service</li>
                 <li className='new-budget__list-item'>Or you can review expenses later on your bank or credit card statement</li>
                 <li className='new-budget__list-item'>Track the remaining budget for each category</li>
