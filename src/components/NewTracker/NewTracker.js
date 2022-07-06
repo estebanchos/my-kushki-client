@@ -5,6 +5,22 @@ import { useEffect, useState } from 'react';
 import addIcon from '../../assets/icons/add_box_light.svg';
 import axios from 'axios';
 import { apiUrl } from '../../utils/api';
+import { Popover } from 'antd';
+
+const budgetTips = (
+    <div>
+        <p><b>Housing:</b> rent, mortgage, property taxes, security deposit, insurance</p>
+        <p><b>Transport:</b> car payments, car insurance, car maintenance, gas, parking, public transport</p>
+        <p><b>Groceries</b></p>
+        <p><b>Health:</b> medicines, expenses not covered by provincial health, gym</p>
+        <p><b>Utilities:</b> hydro, water, home internet, mobile phone, home supplies</p>
+        <p><b>Entertainment:</b> eating out, going out</p>
+        <p><b>Subscriptions:</b> netflix, disney+, magazines, newspapers, apps</p>
+        <p><b>Saving:</b> monthly auto-deposit to savings or investments account</p>
+        <p><b>Emergency Fund:</b> unexpected expenses</p>
+        <p><b>Others:</b> daycare, petfood</p>
+    </div>
+)
 
 function NewTracker({ budget, tracker, setTracker, authHeader, validTrackerExists }) {
     const [selectedCategory, setSelectedCategory] = useState('')
@@ -83,6 +99,16 @@ function NewTracker({ budget, tracker, setTracker, authHeader, validTrackerExist
     return (
         <section className='new-tracker'>
             <h2 className='new-tracker__title'>Track your monthly expenses</h2>
+            <ul className='new-budget__list'>
+                <li className='new-budget__list-item'>Enter an expense soon after paying for a product or service</li>
+                <li className='new-budget__list-item'>Or you can review expenses later on your bank or credit card statement</li>
+                <li className='new-budget__list-item'>Select a category for the expense: <Popover title='Category and sample expenses' content={budgetTips} trigger='click'><span className='new-budget__list-link'>Category Examples</span>
+                </Popover>
+                </li>
+                <li className='new-budget__list-item'>Review our <a className='new-budget__list-link' href='/learn/articles/basics-budget' target='_blank'>Budget Basics</a> article for tips on sticking to a budget
+                </li>
+
+            </ul>
             <div className='new-tracker__container'>
                 <section className='new-tracker__budget-tracker'>
                     <article className='expenses-budget__container'>
@@ -163,7 +189,7 @@ function NewTracker({ budget, tracker, setTracker, authHeader, validTrackerExist
                                             className='expense-inputs__item'
                                             name='item'
                                             id='item'
-                                            placeholder='Item...'
+                                            placeholder='Item purchased / paid...'
                                             value={expenseItem}
                                             onChange={(e) => setExpenseItem(e.target.value)}
                                         />
