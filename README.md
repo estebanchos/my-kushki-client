@@ -1,8 +1,10 @@
 # myKushki - Financial Literacy
-My Kushki is a web app designed to help educate First Nations members of Northern Ontario on financial literacy and provide them with tools to help them manage their finances.
-This MVP was completed in two weeks. Enhancements are expected as I start working closely with the First Nations community.
+My Kushki is a web app and iOS app designed to help educate First Nations members of Northern Ontario on financial literacy and provide them with tools to help them manage their finances.
+This MVP and the accompanying iOS app were completed in two weeks. Enhancements are expected as I start working closely with interested First Nations communities.
 
 Back-end repo: [my-kushki server](https://github.com/estebanchos/my-kushki-server "my-kushki server")
+
+iOS repo: [my-kushki iOS](https://github.com/estebanchos/myKushki-iOS "my-kushki iOS")
 
 ## Problem Space
 The general population lacks financial education and the skills to plan their financial future successfully. On top of that, First Nations live in remote areas and lack access to resources available in cities like internet access.
@@ -28,6 +30,10 @@ Given that First Nations members generally access the internet through their sma
 * MongoDB Atlas
 * Mongoose
 * JWT
+
+### Mobile (iOS)
+* Swift
+* SwiftUI
 
 ## Dependencies
 ### Front-end
